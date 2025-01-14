@@ -5,31 +5,31 @@ import Image from "next/image";
 
 export default function Hero() {
   return (
-    <div className="bg-gradient-to-br from-purple-900 via-indigo-800 to-pink-800">
+    <div className="bg-gradient-to-br from-background to-muted">
       <section className="min-h-screen flex items-center relative overflow-hidden">
         <div className="absolute inset-0 z-0 opacity-30">
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f46e5,#e879f9)] mix-blend-multiply"></div>
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.2),transparent_50%)]"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-white to-purple-500 dark:from-purple-700 dark:to-pink-900 mix-blend-multiply" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.2),transparent_50%)]" />
         </div>
-        <div className="flex flex-col">
-          <div className="container mx-auto px-4 z-10">
-            <div className="flex items-center justify-center gap-12 py-10">
+        <div className="flex flex-col items-center justify-center w-full">
+          <section className="container mx-auto px-4 z-10 min-h-screen flex justify-center items-center">
+            <div className="flex justify-center gap-12 py-10 w-full">
               <motion.div
-                className="w-full md:w-1/2 text-white"
+                className="text-foreground flex flex-col items-center"
                 initial={{ opacity: 0, x: 50 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
               >
                 <motion.h3
-                  className="text-2xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white to-purple-200"
+                  className="text-2xl self-start font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-foreground to-muted-foreground"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5 }}
                 >
-                  Hi, my name is
+                  <strong>Hi, my name is</strong>
                 </motion.h3>
                 <motion.h1
-                  className="text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white to-purple-200"
+                  className="text-4xl sm:text-6xl md:text-8xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary to-purple-500 dark:from-purple-400 dark:to-pink-400 whitespace-nowrap"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5 }}
@@ -37,7 +37,7 @@ export default function Hero() {
                   Aditya Shenoy K
                 </motion.h1>
                 <motion.p
-                  className="text-xl mb-8 text-gray-200"
+                  className="text-xl self-start mb-8 text-muted-foreground"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.2 }}
@@ -46,11 +46,13 @@ export default function Hero() {
                 </motion.p>
               </motion.div>
             </div>
-          </div>
-
-          <div className="container mx-auto px-4 z-10">
+          </section>
+          {/* About */}
+          <section
+            className="container mx-auto px-4 z-10 pb-5 pt-20"
+            id="about"
+          >
             <div className="flex flex-col md:flex-row items-center justify-between gap-12">
-              {/* Left side - Image */}
               <motion.div
                 className="w-full md:w-1/2"
                 initial={{ opacity: 0, x: -50 }}
@@ -58,7 +60,7 @@ export default function Hero() {
                 transition={{ duration: 0.8 }}
               >
                 <div className="relative w-72 h-72 mx-auto">
-                  <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full animate-pulse"></div>
+                  <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-pink-500 dark:from-purple-600 dark:to-pink-600 rounded-full animate-pulse"></div>
                   <Image
                     src="/Aditya.png"
                     alt="Profile"
@@ -68,15 +70,14 @@ export default function Hero() {
                 </div>
               </motion.div>
 
-              {/* Right side - About Content */}
               <motion.div
-                className="w-full md:w-1/2 text-white"
+                className="w-full md:w-1/2 text-foreground"
                 initial={{ opacity: 0, x: 50 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
               >
                 <motion.h2
-                  className="text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white to-purple-200"
+                  className="text-3xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary to-purple-500 dark:from-purple-400 dark:to-pink-400"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5 }}
@@ -84,7 +85,7 @@ export default function Hero() {
                   About me
                 </motion.h2>
                 <motion.p
-                  className="text-xl mb-8 text-gray-200"
+                  className="text-xl mb-8 text-muted-foreground"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.2 }}
@@ -95,7 +96,7 @@ export default function Hero() {
                   and intuitive interfaces.
                 </motion.p>
                 <motion.p
-                  className="text-gray-300 mb-8 leading-relaxed"
+                  className="text-muted-foreground mb-8 leading-relaxed"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.4 }}
@@ -111,16 +112,16 @@ export default function Hero() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.6 }}
                 >
-                  <button className="px-6 py-3 bg-white text-purple-600 rounded-full font-semibold hover:bg-opacity-90 transition transform hover:scale-105">
+                  <button className="px-6 py-3 bg-primary text-primary-foreground rounded-full font-semibold hover:opacity-90 transition transform hover:scale-105">
                     View Projects
                   </button>
-                  <button className="px-6 py-3 border-2 border-white text-white rounded-full font-semibold hover:bg-white hover:text-purple-600 transition transform hover:scale-105">
+                  <button className="px-6 py-3 border-2 border-primary text-primary rounded-full font-semibold hover:bg-primary hover:text-primary-foreground transition transform hover:scale-105">
                     Contact Me
                   </button>
                 </motion.div>
               </motion.div>
             </div>
-          </div>
+          </section>
         </div>
       </section>
     </div>

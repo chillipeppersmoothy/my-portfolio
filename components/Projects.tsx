@@ -106,7 +106,7 @@ export default function Projects() {
             <motion.div
               key={index}
               variants={fadeIn}
-              className="group bg-gradient-to-br from-purple-50 to-pink-50 rounded-lg shadow-lg hover:shadow-xl transition-all cursor-pointer"
+              className="group bg-gradient-to-br from-white to-pink-50 rounded-lg shadow-lg hover:shadow-xl transition-all cursor-pointer"
               onClick={() => setSelectedProject(project)}
             >
               <div className="relative h-48 w-full overflow-hidden rounded-t-lg">

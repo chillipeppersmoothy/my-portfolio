@@ -1,9 +1,10 @@
 "use client";
 
-import { DownloadIcon, Laugh } from "lucide-react";
+import { Laugh } from "lucide-react";
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
+import { ThemeToggle } from "./ThemeToggle";
 
 const NAV_ITEMS = [
   {
@@ -28,7 +29,7 @@ const NAV_ITEMS = [
   },
   {
     name: "Resume",
-    href: "#resume"
+    href: "#resume",
   },
 ];
 
@@ -88,14 +89,10 @@ export default function Header() {
                     : "text-muted-foreground"
                 )}
               >
-                {item?.icon ? 
-                    <div className="flex p-2">
-                        {item.name}
-                        <item.icon />
-                    </div> : <>{item.name}</>
-                }
+                {item.name}
               </button>
             ))}
+            <ThemeToggle />
           </motion.div>
         </div>
       </div>
