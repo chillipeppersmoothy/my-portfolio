@@ -29,7 +29,7 @@ export default function Hero() {
                   <strong>Hi, my name is</strong>
                 </motion.h3>
                 <motion.h1
-                  className="text-4xl sm:text-6xl md:text-8xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary to-purple-500 dark:from-purple-400 dark:to-pink-400 whitespace-nowrap"
+                  className="text-4xl sm:text-6xl md:text-8xl font-bold mb-8 bg-clip-text text-transparent bg-gradient-to-r from-primary to-purple-500 dark:from-purple-400 dark:to-pink-400 whitespace-nowrap"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5 }}
@@ -61,12 +61,15 @@ export default function Hero() {
               >
                 <div className="relative w-72 h-72 mx-auto">
                   <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-pink-500 dark:from-purple-600 dark:to-pink-600 rounded-full animate-pulse"></div>
-                  <Image
-                    src="/Aditya.png"
-                    alt="Profile"
-                    fill
-                    className="object-cover rounded-full p-2 z-10"
-                  />
+                  <div className="absolute inset-0 rounded-full overflow-hidden p-2">
+                    <Image
+                      src="/Aditya.png"
+                      alt="Profile"
+                      fill
+                      className="object-cover rounded-full"
+                      style={{ objectFit: "cover" }}
+                    />
+                  </div>
                 </div>
               </motion.div>
 

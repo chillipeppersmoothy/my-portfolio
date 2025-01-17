@@ -25,10 +25,10 @@ const CONTACT_ITEMS = [
 
 export default function GetInTouch() {
   return (
-    <section className="py-20 bg-white" id="getInTouch">
+    <section className="py-20 bg-gradient-to-br from-background to-muted" id="getInTouch">
       <div className="max-w-6xl mx-auto px-4">
         <motion.h2
-          className="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent"
+          className="text-4xl font-bold text-center mb-12 bg-clip-text bg-gradient-to-r from-primary to-purple-500 dark:from-purple-400 dark:to-pink-400"
           initial={fadeIn.initial}
           whileInView={fadeIn.animate}
           viewport={{ once: true }}
@@ -47,11 +47,11 @@ export default function GetInTouch() {
               key={index}
               href={item.href}
               variants={fadeIn}
-              className="p-6 bg-gradient-to-br from-purple-50 to-pink-50 rounded-lg text-center hover:shadow-lg transition cursor-pointer"
+              className="p-6 bg-gradient-to-br from-background to-muted rounded-lg text-center hover:shadow-lg transition cursor-pointer border border-purple-500/20 dark:border-purple-400/20"
             >
-              <item.icon className="w-8 h-8 text-purple-600 mx-auto mb-4" />
-              <h3 className="font-semibold mb-2">{item.title}</h3>
-              <p className="text-sm text-gray-600">{item.content}</p>
+              <item.icon className="w-8 h-8 bg-clip-text bg-gradient-to-r from-purple-500 to-pink-500 dark:from-purple-400 dark:to-pink-400 mx-auto mb-4" />
+              <h3 className="font-semibold text-foreground mb-2">{item.title}</h3>
+              <p className="text-sm text-muted-foreground">{item.content}</p>
             </motion.a>
           ))}
         </motion.div>

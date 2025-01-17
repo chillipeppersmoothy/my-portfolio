@@ -85,10 +85,13 @@ export default function Projects() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   return (
-    <section className="py-20 bg-white" id="projects">
+    <section
+      className="py-20 bg-gradient-to-br from-background to-muted"
+      id="projects"
+    >
       <div className="max-w-6xl mx-auto px-4">
         <motion.h2
-          className="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent"
+          className="text-4xl font-bold text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-primary to-purple-500 dark:from-purple-400 dark:to-pink-400"
           initial={fadeIn.initial}
           whileInView={fadeIn.animate}
           viewport={{ once: true }}
@@ -106,7 +109,7 @@ export default function Projects() {
             <motion.div
               key={index}
               variants={fadeIn}
-              className="group bg-gradient-to-br from-white to-pink-50 rounded-lg shadow-lg hover:shadow-xl transition-all cursor-pointer"
+              className="group bg-gradient-to-br from-background to-muted rounded-lg shadow-lg hover:shadow-xl transition-all cursor-pointer border border-purple-500/20 dark:border-purple-400/20"
               onClick={() => setSelectedProject(project)}
             >
               <div className="relative h-48 w-full overflow-hidden rounded-t-lg">
@@ -118,14 +121,18 @@ export default function Projects() {
                 />
               </div>
               <div className="p-6">
-                <project.icon className="w-10 h-10 text-purple-600 mb-4" />
-                <h3 className="text-xl font-bold mb-2">{project.title}</h3>
-                <p className="text-gray-600 mb-4">{project.description}</p>
+                <project.icon className="w-10 h-10 text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-pink-500 dark:from-purple-400 dark:to-pink-400 mb-4" />
+                <h3 className="text-xl font-bold mb-2 text-foreground">
+                  {project.title}
+                </h3>
+                <p className="text-muted-foreground mb-4">
+                  {project.description}
+                </p>
                 <div className="flex flex-wrap gap-2">
                   {project.tech.map((tech, i) => (
                     <span
                       key={i}
-                      className="px-3 py-1 bg-purple-100 text-purple-600 rounded-full text-sm"
+                      className="px-3 py-1 bg-gradient-to-r from-purple-500/10 to-pink-500/10 dark:from-purple-400/10 dark:to-pink-400/10 text-foreground rounded-full text-sm"
                     >
                       {tech}
                     </span>
@@ -137,19 +144,18 @@ export default function Projects() {
         </motion.div>
       </div>
 
-      {/* Project Details Modal */}
       <Dialog
         open={!!selectedProject}
         onOpenChange={() => setSelectedProject(null)}
       >
-        <DialogContent className="max-w-3xl">
+        <DialogContent className="max-w-3xl bg-gradient-to-br from-background to-muted">
           {selectedProject && (
             <>
               <DialogHeader>
-                <DialogTitle className="text-2xl font-bold">
+                <DialogTitle className="text-2xl font-bold text-foreground">
                   {selectedProject.title}
                 </DialogTitle>
-                <DialogDescription className="text-lg mt-2">
+                <DialogDescription className="text-lg mt-2 text-muted-foreground">
                   {selectedProject.description}
                 </DialogDescription>
               </DialogHeader>
@@ -162,30 +168,32 @@ export default function Projects() {
                 />
               </div>
               <div className="mt-4">
-                <h4 className="font-semibold text-lg mb-2">
+                <h4 className="font-semibold text-lg mb-2 text-foreground">
                   About the Project
                 </h4>
-                <p className="text-gray-600">
+                <p className="text-muted-foreground">
                   {selectedProject.longDescription}
                 </p>
               </div>
               <div className="mt-4">
-                <h4 className="font-semibold text-lg mb-2">Key Features</h4>
-                <ul className="list-disc pl-5 text-gray-600">
+                <h4 className="font-semibold text-lg mb-2 text-foreground">
+                  Key Features
+                </h4>
+                <ul className="list-disc pl-5 text-muted-foreground">
                   {selectedProject.features.map((feature, index) => (
                     <li key={index}>{feature}</li>
                   ))}
                 </ul>
               </div>
               <div className="mt-4">
-                <h4 className="font-semibold text-lg mb-2">
+                <h4 className="font-semibold text-lg mb-2 text-foreground">
                   Technologies Used
                 </h4>
                 <div className="flex flex-wrap gap-2">
                   {selectedProject.tech.map((tech, index) => (
                     <span
                       key={index}
-                      className="px-3 py-1 bg-purple-100 text-purple-600 rounded-full text-sm"
+                      className="px-3 py-1 bg-gradient-to-r from-purple-500/10 to-pink-500/10 dark:from-purple-400/10 dark:to-pink-400/10 text-foreground rounded-full text-sm"
                     >
                       {tech}
                     </span>
@@ -197,7 +205,7 @@ export default function Projects() {
                   href={selectedProject.demoUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-block px-6 py-3 bg-purple-600 text-white rounded-full font-semibold hover:bg-purple-700 transition"
+                  className="inline-block px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 dark:from-purple-600 dark:to-pink-600 text-white rounded-full font-semibold hover:opacity-90 transition"
                 >
                   View Live Demo
                 </a>
