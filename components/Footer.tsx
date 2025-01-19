@@ -6,12 +6,12 @@ const FOOTER_ITEMS = [
   {
     icon: Github,
     title: "GitHub",
-    href: "https://github.com/yourusername",
+    href: "https://github.com/chillipeppersmoothy/",
   },
   {
     icon: Linkedin,
     title: "LinkedIn",
-    href: "https://linkedin.com/in/yourusername",
+    href: "https://www.linkedin.com/in/aditya-shenoy-k-a78119178/",
   },
   {
     icon: Instagram,
@@ -27,7 +27,7 @@ const FOOTER_ITEMS = [
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-50">
+    <footer className="bg-gradient-to-br from-background to-muted">
       <div className="container mx-auto pt-8 pb-2">
         <div className="flex flex-col items-center gap-4">
           <div className="flex gap-4">
@@ -41,9 +41,6 @@ export default function Footer() {
           </div>
           <p className="text-sm text-muted-foreground">
             Designed and Developed by Aditya Shenoy K
-          </p>
-          <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} All rights reserved.
           </p>
         </div>
       </div>
