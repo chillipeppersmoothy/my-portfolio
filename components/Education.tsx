@@ -3,17 +3,7 @@
 import { motion } from "framer-motion";
 import { fadeIn, staggerContainer } from "../lib/utils";
 import { GraduationCap } from "lucide-react";
-
-const EDUCATION_DATA = [
-  {
-    degree: "Bachelor of Software Engineering",
-    school: "Digital College",
-    year: "2014-2018",
-    icon: GraduationCap,
-    image:
-      "https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=800&auto=format&fit=crop&q=60",
-  },
-];
+import Image from "next/image";
 
 export default function Education() {
   return (
@@ -37,24 +27,35 @@ export default function Education() {
           whileInView="animate"
           viewport={{ once: true }}
         >
-          {EDUCATION_DATA.map((edu, index) => (
+          <div className="flex justify-center items-center">
             <motion.div
               variants={fadeIn}
-              key={index}
               className="rounded-lg p-px bg-gradient-to-b from-purple-500 to-pink-500 dark:from-purple-400 dark:to-pink-400 mb-4"
             >
-              <div className="bg-gradient-to-br from-background to-muted p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow border border-purple-500/20 dark:border-purple-400/20">
-                <edu.icon className="w-10 h-10 bg-clip-text bg-gradient-to-r from-purple-500 to-pink-500 dark:from-purple-400 dark:to-pink-400 mb-4" />
+              <div className="bg-gradient-to-br from-background to-muted p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+                <GraduationCap className="w-10 h-10 bg-clip-text bg-gradient-to-r from-purple-500 to-pink-500 dark:from-purple-400 dark:to-pink-400 mb-4" />
                 <h3 className="text-xl font-bold text-foreground">
-                  {edu.degree}
+                  Bachelor of Engineering
                 </h3>
-                <p className="text-muted-foreground">{edu.school}</p>
-                <p className="text-sm bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-pink-500 dark:from-purple-400 dark:to-pink-400 mt-2">
-                  {edu.year}
+                <p className="text-muted-foreground">
+                  NMAM Institute of Technology
                 </p>
+                <p className="text-sm bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-pink-500 dark:from-purple-400 dark:to-pink-400 mt-2">
+                  2016-2020
+                </p>
+                <p className="text-muted-foreground">CGPA: 8.7</p>
               </div>
             </motion.div>
-          ))}
+            <Image
+              src="/nmamit.webp"
+              alt="NMAM Institute of Technology"
+              loading="lazy"
+              width="500"
+              height="400"
+              decoding="async"
+              className="rounded-lg"
+            />
+          </div>
         </motion.div>
       </div>
     </section>

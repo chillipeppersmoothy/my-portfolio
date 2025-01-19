@@ -12,6 +12,7 @@ import {
 import { useState } from "react";
 import { Code2, Globe2, Laptop } from "lucide-react";
 import { fadeIn, staggerContainer } from "../lib/utils";
+import Link from "next/link";
 
 type Project = {
   title: string;
@@ -81,14 +82,41 @@ const projects: Project[] = [
   },
 ];
 
+function ProjectCard({
+  project,
+  index,
+  setSelectedProject,
+}: {
+  project: Project;
+  index: number;
+  setSelectedProject: React.Dispatch<React.SetStateAction<Project | null>>;
+}) {
+  return (
+    <motion.div
+      variants={fadeIn}
+      key={index}
+      className="group bg-gradient-to-br from-background to-muted rounded-lg shadow-lg hover:shadow-xl transition-all cursor-pointer"
+      onClick={() => setSelectedProject(project)}
+    >
+      <div className="relative h-48 w-full overflow-hidden rounded-lg transition-transform group-hover:scale-110">
+        <Image
+          src={project.image}
+          alt={project.title}
+          width="400"
+          height="300"
+          loading="lazy"
+          className="object-cover rounded-lg"
+        />
+      </div>
+    </motion.div>
+  );
+}
+
 export default function Projects() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   return (
-    <section
-      className="py-20 bg-gradient-to-br from-background to-muted"
-      id="projects"
-    >
+    <section className="py-20 bg-none" id="projects">
       <div className="max-w-6xl mx-auto px-4">
         <motion.h2
           className="text-4xl font-bold text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-primary to-purple-500 dark:from-purple-400 dark:to-pink-400"
@@ -99,48 +127,15 @@ export default function Projects() {
           Featured Projects
         </motion.h2>
         <motion.div
-          className="grid md:grid-cols-3 gap-8"
+          className="grid md:grid-cols-3 gap-10"
           variants={staggerContainer}
           initial="initial"
           whileInView="animate"
           viewport={{ once: true }}
         >
-          {projects.map((project, index) => (
-            <motion.div
-              key={index}
-              variants={fadeIn}
-              className="group bg-gradient-to-br from-background to-muted rounded-lg shadow-lg hover:shadow-xl transition-all cursor-pointer border border-purple-500/20 dark:border-purple-400/20"
-              onClick={() => setSelectedProject(project)}
-            >
-              <div className="relative h-48 w-full overflow-hidden rounded-t-lg">
-                <Image
-                  src={project.image}
-                  alt={project.title}
-                  fill
-                  className="object-cover transition-transform group-hover:scale-110"
-                />
-              </div>
-              <div className="p-6">
-                <project.icon className="w-10 h-10 text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-pink-500 dark:from-purple-400 dark:to-pink-400 mb-4" />
-                <h3 className="text-xl font-bold mb-2 text-foreground">
-                  {project.title}
-                </h3>
-                <p className="text-muted-foreground mb-4">
-                  {project.description}
-                </p>
-                <div className="flex flex-wrap gap-2">
-                  {project.tech.map((tech, i) => (
-                    <span
-                      key={i}
-                      className="px-3 py-1 bg-gradient-to-r from-purple-500/10 to-pink-500/10 dark:from-purple-400/10 dark:to-pink-400/10 text-foreground rounded-full text-sm"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </motion.div>
-          ))}
+          {projects.map((project, index) =>
+            ProjectCard({ project, index, setSelectedProject })
+          )}
         </motion.div>
       </div>
 
@@ -200,15 +195,23 @@ export default function Projects() {
                   ))}
                 </div>
               </div>
-              <div className="mt-6">
-                <a
+              <div className="mt-6 flex">
+                <Link
+                  href={selectedProject.demoUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 dark:from-purple-600 dark:to-pink-600 text-white rounded-full font-semibold hover:opacity-90 transition mx-2"
+                >
+                  Vist
+                </Link>
+                <Link
                   href={selectedProject.demoUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-block px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 dark:from-purple-600 dark:to-pink-600 text-white rounded-full font-semibold hover:opacity-90 transition"
                 >
-                  View Live Demo
-                </a>
+                  Github
+                </Link>
               </div>
             </>
           )}

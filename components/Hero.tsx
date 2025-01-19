@@ -4,13 +4,16 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 
 export default function Hero() {
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
-    <div className="bg-gradient-to-br from-background to-muted">
+    <div className="bg-none">
       <section className="min-h-screen flex items-center relative overflow-hidden">
-        <div className="absolute inset-0 z-0 opacity-30">
-          <div className="absolute inset-0 bg-gradient-to-r from-white to-purple-500 dark:from-purple-700 dark:to-pink-900 mix-blend-multiply" />
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.2),transparent_50%)]" />
-        </div>
         <div className="flex flex-col items-center justify-center w-full">
           <section className="container mx-auto px-4 z-10 min-h-screen flex justify-center items-center">
             <div className="flex justify-center gap-12 py-10 w-full">
@@ -116,9 +119,12 @@ export default function Hero() {
                   transition={{ duration: 0.5, delay: 0.6 }}
                 >
                   <button className="px-6 py-3 bg-primary text-primary-foreground rounded-full font-semibold hover:opacity-90 transition transform hover:scale-105">
-                    View Projects
+                    View Resume
                   </button>
-                  <button className="px-6 py-3 border-2 border-primary text-primary rounded-full font-semibold hover:bg-primary hover:text-primary-foreground transition transform hover:scale-105">
+                  <button
+                    className="px-6 py-3 border-2 border-primary text-primary rounded-full font-semibold hover:bg-primary hover:text-primary-foreground transition transform hover:scale-105"
+                    onClick={() => scrollToSection("getInTouch")}
+                  >
                     Contact Me
                   </button>
                 </motion.div>
