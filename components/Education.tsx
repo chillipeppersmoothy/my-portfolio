@@ -47,7 +47,7 @@ export default function Education() {
               </div>
             </motion.div>
             <Image
-              src="/nmamit.webp"
+              src="/images/nmamit.webp"
               alt="NMAM Institute of Technology"
               loading="lazy"
               width="500"

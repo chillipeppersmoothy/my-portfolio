@@ -5,11 +5,14 @@ import Education from "@/components/Education";
 import Hero from "@/components/Hero";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import ParticleCanvas from "../components/ParticleCanvas";
 
 export default function Home() {
   return (
     <main className="min-h-screen">
+      
       <Header />
+
       {/* Hero Section */}
       <Hero />
 
@@ -26,6 +29,7 @@ export default function Home() {
       <GetInTouch />
 
       <Footer />
+      <ParticleCanvas />
     </main>
   );
 }

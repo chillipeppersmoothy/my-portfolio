@@ -110,3 +110,8 @@
 .pulse-border {
   animation: pulse-border 2s ease-in-out infinite;
 }
+
+body {
+  margin: 0;
+  font: normal 75% Arial, Helvetica, sans-serif;
+}

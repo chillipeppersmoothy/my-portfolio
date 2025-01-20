@@ -66,7 +66,7 @@ export default function Hero() {
                   <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-pink-500 dark:from-purple-600 dark:to-pink-600 rounded-full animate-pulse"></div>
                   <div className="absolute inset-0 rounded-full overflow-hidden p-2">
                     <Image
-                      src="/Aditya.png"
+                      src="/images/aditya.png"
                       alt="Profile"
                       fill
                       className="object-cover rounded-full"
