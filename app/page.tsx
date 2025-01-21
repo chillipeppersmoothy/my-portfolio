@@ -10,7 +10,7 @@ import ParticleCanvas from "../components/ParticleCanvas";
 export default function Home() {
   return (
     <main className="min-h-screen">
-      
+      <ParticleCanvas />
       <Header />
 
       {/* Hero Section */}
@@ -29,7 +29,6 @@ export default function Home() {
       <GetInTouch />
 
       <Footer />
-      <ParticleCanvas />
     </main>
   );
 }
