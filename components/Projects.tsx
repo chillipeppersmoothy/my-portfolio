@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import {
   Dialog,
@@ -86,34 +86,68 @@ function ProjectCard({
   project,
   index,
   setSelectedProject,
+  selectedIndex,
+  setSelectedIndex,
 }: {
   project: Project;
   index: number;
   setSelectedProject: React.Dispatch<React.SetStateAction<Project | null>>;
+  selectedIndex: number | null;
+  setSelectedIndex: React.Dispatch<React.SetStateAction<number | null>>;
 }) {
+  const handleClick = () => {
+    setSelectedProject(project);
+    setSelectedIndex(index);
+  };
+
   return (
     <motion.div
       variants={fadeIn}
       key={index}
-      className="group bg-gradient-to-br from-background to-muted rounded-lg shadow-lg hover:shadow-xl transition-all cursor-pointer"
-      onClick={() => setSelectedProject(project)}
+      className="group relative bg-gradient-to-br from-background to-muted rounded-lg shadow-lg hover:shadow-xl transition-all cursor-pointer overflow-hidden"
+      onClick={handleClick}
+      layoutId={`project-container-${index}`}
     >
-      <div className="relative h-48 w-full overflow-hidden rounded-lg transition-transform group-hover:scale-110">
+      <motion.div
+        className="relative h-48 md:h-64 w-full overflow-hidden"
+        layoutId={`project-image-${index}`}
+      >
         <Image
           src={project.image}
           alt={project.title}
-          width="400"
-          height="300"
-          loading="lazy"
-          className="object-cover rounded-lg"
+          fill
+          className="object-cover transition-transform duration-300 group-hover:scale-110"
         />
-      </div>
+        {/* Gradient overlay on hover */}
+        <div className="absolute inset-0 bg-gradient-to-br from-transparent to-black/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <div className="absolute bottom-4 right-4">
+            <span className="text-white font-semibold px-4 py-2 rounded-full bg-primary/80 hover:bg-primary transition-colors">
+              View Project
+            </span>
+          </div>
+        </div>
+      </motion.div>
+      <motion.div className="p-4" layoutId={`project-content-${index}`}>
+        <h3 className="text-lg font-semibold mb-2">{project.title}</h3>
+        <p className="text-muted-foreground text-sm">{project.description}</p>
+        <div className="mt-4 flex flex-wrap gap-2">
+          {project.tech.map((tech, techIndex) => (
+            <span
+              key={techIndex}
+              className="px-3 py-1 bg-gradient-to-r from-purple-500/10 to-pink-500/10 dark:from-purple-400/10 dark:to-pink-400/10 text-foreground rounded-full text-sm"
+            >
+              {tech}
+            </span>
+          ))}
+        </div>
+      </motion.div>
     </motion.div>
   );
 }
 
 export default function Projects() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
 
   return (
     <section className="py-20 bg-none" id="projects">
@@ -127,96 +161,115 @@ export default function Projects() {
           Featured Projects
         </motion.h2>
         <motion.div
-          className="grid md:grid-cols-3 gap-10"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
           variants={staggerContainer}
           initial="initial"
           whileInView="animate"
           viewport={{ once: true }}
         >
-          {projects.map((project, index) =>
-            ProjectCard({ project, index, setSelectedProject })
-          )}
+          {projects.map((project, index) => (
+            <ProjectCard
+              key={index}
+              project={project}
+              index={index}
+              setSelectedProject={setSelectedProject}
+              selectedIndex={selectedIndex}
+              setSelectedIndex={setSelectedIndex}
+            />
+          ))}
         </motion.div>
       </div>
 
-      <Dialog
-        open={!!selectedProject}
-        onOpenChange={() => setSelectedProject(null)}
-      >
-        <DialogContent className="max-w-3xl bg-gradient-to-br from-background to-muted">
-          {selectedProject && (
-            <>
-              <DialogHeader>
-                <DialogTitle className="text-2xl font-bold text-foreground">
-                  {selectedProject.title}
-                </DialogTitle>
-                <DialogDescription className="text-lg mt-2 text-muted-foreground">
-                  {selectedProject.description}
-                </DialogDescription>
-              </DialogHeader>
-              <div className="relative h-64 w-full mt-4">
-                <Image
-                  src={selectedProject.image}
-                  alt={selectedProject.title}
-                  fill
-                  className="object-cover rounded-lg"
-                />
-              </div>
-              <div className="mt-4">
-                <h4 className="font-semibold text-lg mb-2 text-foreground">
-                  About the Project
-                </h4>
-                <p className="text-muted-foreground">
-                  {selectedProject.longDescription}
-                </p>
-              </div>
-              <div className="mt-4">
-                <h4 className="font-semibold text-lg mb-2 text-foreground">
-                  Key Features
-                </h4>
-                <ul className="list-disc pl-5 text-muted-foreground">
-                  {selectedProject.features.map((feature, index) => (
-                    <li key={index}>{feature}</li>
-                  ))}
-                </ul>
-              </div>
-              <div className="mt-4">
-                <h4 className="font-semibold text-lg mb-2 text-foreground">
-                  Technologies Used
-                </h4>
-                <div className="flex flex-wrap gap-2">
-                  {selectedProject.tech.map((tech, index) => (
-                    <span
-                      key={index}
-                      className="px-3 py-1 bg-gradient-to-r from-purple-500/10 to-pink-500/10 dark:from-purple-400/10 dark:to-pink-400/10 text-foreground rounded-full text-sm"
+      <AnimatePresence>
+        {selectedProject && selectedIndex !== null && (
+          <Dialog
+            open={!!selectedProject}
+            onOpenChange={() => {
+              setSelectedProject(null);
+              setSelectedIndex(null);
+            }}
+          >
+            <DialogContent className="max-w-5xl p-0 bg-gradient-to-br from-background to-muted overflow-hidden">
+              <div className="flex flex-col md:flex-row">
+                <motion.div
+                  layoutId={`project-image-${selectedIndex}`}
+                  className="relative w-full md:w-1/2 h-64 md:h-auto"
+                >
+                  <Image
+                    src={selectedProject.image}
+                    alt={selectedProject.title}
+                    fill
+                    className="object-cover"
+                  />
+                </motion.div>
+                <div className="w-full md:w-1/2 p-6 overflow-y-auto max-h-[80vh]">
+                  <DialogHeader>
+                    <motion.div layoutId={`project-content-${selectedIndex}`}>
+                      <DialogTitle className="text-2xl font-bold text-foreground">
+                        {selectedProject.title}
+                      </DialogTitle>
+                      <DialogDescription className="text-lg mt-2 text-muted-foreground">
+                        {selectedProject.description}
+                      </DialogDescription>
+                    </motion.div>
+                  </DialogHeader>
+                  <div className="mt-4">
+                    <h4 className="font-semibold text-lg mb-2 text-foreground">
+                      About the Project
+                    </h4>
+                    <p className="text-muted-foreground">
+                      {selectedProject.longDescription}
+                    </p>
+                  </div>
+                  <div className="mt-4">
+                    <h4 className="font-semibold text-lg mb-2 text-foreground">
+                      Key Features
+                    </h4>
+                    <ul className="list-disc pl-5 text-muted-foreground">
+                      {selectedProject.features.map((feature, index) => (
+                        <li key={index}>{feature}</li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div className="mt-4">
+                    <h4 className="font-semibold text-lg mb-2 text-foreground">
+                      Technologies Used
+                    </h4>
+                    <div className="flex flex-wrap gap-2">
+                      {selectedProject.tech.map((tech, index) => (
+                        <span
+                          key={index}
+                          className="px-3 py-1 bg-gradient-to-r from-purple-500/10 to-pink-500/10 dark:from-purple-400/10 dark:to-pink-400/10 text-foreground rounded-full text-sm"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                  <div className="mt-6 flex gap-4">
+                    <Link
+                      href={selectedProject.demoUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-block px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 dark:from-purple-600 dark:to-pink-600 text-white rounded-full font-semibold hover:opacity-90 transition"
                     >
-                      {tech}
-                    </span>
-                  ))}
+                      Visit Project
+                    </Link>
+                    <Link
+                      href={selectedProject.demoUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-block px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 dark:from-purple-600 dark:to-pink-600 text-white rounded-full font-semibold hover:opacity-90 transition"
+                    >
+                      View Code
+                    </Link>
+                  </div>
                 </div>
               </div>
-              <div className="mt-6 flex">
-                <Link
-                  href={selectedProject.demoUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-block px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 dark:from-purple-600 dark:to-pink-600 text-white rounded-full font-semibold hover:opacity-90 transition mx-2"
-                >
-                  Vist
-                </Link>
-                <Link
-                  href={selectedProject.demoUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-block px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 dark:from-purple-600 dark:to-pink-600 text-white rounded-full font-semibold hover:opacity-90 transition"
-                >
-                  Github
-                </Link>
-              </div>
-            </>
-          )}
-        </DialogContent>
-      </Dialog>
+            </DialogContent>
+          </Dialog>
+        )}
+      </AnimatePresence>
     </section>
   );
 }
