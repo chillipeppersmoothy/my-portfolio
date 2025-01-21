@@ -27,7 +27,8 @@ const FOOTER_ITEMS = [
 
 export default function Footer() {
   return (
-    <footer className="bg-gradient-to-br from-background to-muted">
+    <footer className="relative bg-black z-10">
+      <div className="absolute inset-0 bg-gradient-to-br from-background to-muted z-[-1]" />
       <div className="container mx-auto pt-8 pb-2">
         <div className="flex flex-col items-center gap-4">
           <div className="flex gap-4">

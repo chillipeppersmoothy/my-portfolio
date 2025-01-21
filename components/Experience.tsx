@@ -27,9 +27,10 @@ const EXPERIENCE_DATA = [
 export default function Experience() {
   return (
     <section
-      className="py-20 bg-gradient-to-br from-background to-muted"
+      className="relative py-20 bg-black z-10 bg-gradient-to-br from-background to-muted"
       id="experience"
     >
+      <div className="absolute inset-0  bg-gradient-to-br from-background to-muted z-[-1]" />
       <div className="max-w-6xl mx-auto px-4">
         <motion.h2
           className="text-4xl font-bold text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-primary to-purple-500 dark:from-purple-400 dark:to-pink-400"
