@@ -69,7 +69,7 @@ export default function Header() {
       <div className="container mx-auto px-4 py-3">
         <div className="flex items-center justify-between">
           <Laugh className="h-8 w-8 text-indigo-500 dark:text-indigo-400 animate-bounce" />
-          <motion.div
+          <motion.nav
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             className="flex gap-6"
@@ -93,7 +93,7 @@ export default function Header() {
               </button>
             ))}
             <ThemeToggle />
-          </motion.div>
+          </motion.nav>
         </div>
       </div>
     </nav>

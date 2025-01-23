@@ -86,7 +86,6 @@ function ProjectCard({
   project,
   index,
   setSelectedProject,
-  selectedIndex,
   setSelectedIndex,
 }: {
   project: Project;
@@ -109,14 +108,14 @@ function ProjectCard({
       layoutId={`project-container-${index}`}
     >
       <motion.div
-        className="relative h-48 md:h-64 w-full overflow-hidden"
+        className="relative h-48 md:h-64 w-full overflow-hidden group-hover:scale-110"
         layoutId={`project-image-${index}`}
       >
         <Image
           src={project.image}
           alt={project.title}
           fill
-          className="object-cover transition-transform duration-300 group-hover:scale-110"
+          className="object-cover transition-transform duration-300"
         />
         {/* Gradient overlay on hover */}
         <div className="absolute inset-0 bg-gradient-to-br from-transparent to-black/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300">

@@ -8,7 +8,7 @@ import { GraduationCap } from "lucide-react";
 export default function Education() {
   return (
     <section className="relative py-20 bg-black z-10" id="education">
-      <div className="absolute inset-0  bg-gradient-to-br from-background to-muted z-[-1]" />
+      <div className="absolute inset-0 bg-gradient-to-br from-background to-muted z-[-1]" />
 
       <div className="max-w-6xl mx-auto px-4">
         <motion.h2

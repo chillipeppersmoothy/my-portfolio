@@ -46,7 +46,7 @@ function ContactCard({
     <motion.div
       variants={fadeIn}
       key={index}
-      className="rounded-lg p-0.5 bg-gradient-to-b from-purple-500 to-pink-500 dark:from-purple-400 dark:to-pink-400 mb-0"
+      className="relative z-10 rounded-lg p-px bg-gradient-to-b from-purple-500 to-pink-500 dark:from-purple-400 dark:to-pink-400 mb-0"
     >
       <div className="p-6 pb-5 bg-gradient-to-br from-background to-muted rounded-lg text-center hover:shadow-lg cursor-default transition">
         <item.icon className="w-8 h-8 bg-clip-text bg-gradient-to-r from-primary to-purple-500 dark:from-purple-400 dark:to-pink-400 mx-auto mb-4" />
@@ -57,7 +57,7 @@ function ContactCard({
         >
           <p
             className={
-              `text-sm text-muted-foreground px-3  hover:text-white` +
+              `text-sm text-muted-foreground px-3  hover:text-white hover:dark:text-black` +
               (item.title === "Availability" ? " mb-[4px]" : "")
             }
           >
@@ -97,7 +97,7 @@ export default function GetInTouch() {
           Get in Touch
         </motion.h2>
         <motion.div
-          className="grid md:grid-cols-3 gap-8"
+          className="grid md:grid-cols-3 gap-10"
           variants={staggerContainer}
           initial="initial"
           whileInView="animate"
