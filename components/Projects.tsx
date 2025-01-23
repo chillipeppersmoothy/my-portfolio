@@ -103,12 +103,12 @@ function ProjectCard({
     <motion.div
       variants={fadeIn}
       key={index}
-      className="group relative bg-gradient-to-br from-background to-muted rounded-lg shadow-lg hover:shadow-xl transition-all cursor-pointer overflow-hidden"
+      className="group relative bg-gradient-to-br from-background to-muted rounded-lg shadow-lg hover:shadow-xl transition-all cursor-pointer overflow-hidden hover:transform hover:scale-110"
       onClick={handleClick}
       layoutId={`project-container-${index}`}
     >
       <motion.div
-        className="relative h-48 md:h-64 w-full overflow-hidden group-hover:scale-110"
+        className="relative h-48 md:h-64 w-full overflow-hidden"
         layoutId={`project-image-${index}`}
       >
         <Image
@@ -120,24 +120,10 @@ function ProjectCard({
         {/* Gradient overlay on hover */}
         <div className="absolute inset-0 bg-gradient-to-br from-transparent to-black/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
           <div className="absolute bottom-4 right-4">
-            <span className="text-white font-semibold px-4 py-2 rounded-full bg-primary/80 hover:bg-primary transition-colors">
+            <span className="text-purple-400 font-bold px-4 py-2 rounded-full bg-none transition-colors">
               View Project
             </span>
           </div>
-        </div>
-      </motion.div>
-      <motion.div className="p-4" layoutId={`project-content-${index}`}>
-        <h3 className="text-lg font-semibold mb-2">{project.title}</h3>
-        <p className="text-muted-foreground text-sm">{project.description}</p>
-        <div className="mt-4 flex flex-wrap gap-2">
-          {project.tech.map((tech, techIndex) => (
-            <span
-              key={techIndex}
-              className="px-3 py-1 bg-gradient-to-r from-purple-500/10 to-pink-500/10 dark:from-purple-400/10 dark:to-pink-400/10 text-foreground rounded-full text-sm"
-            >
-              {tech}
-            </span>
-          ))}
         </div>
       </motion.div>
     </motion.div>

@@ -2,7 +2,6 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { ThemeProvider } from "./providers";
-import Head from "next/head";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,9 +20,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <Head>
         <link rel="preload" href="/images/nmamit.webp" as="image" />
-      </Head>
       <body className={inter.className} suppressHydrationWarning>
         <ThemeProvider
           attribute="class"
