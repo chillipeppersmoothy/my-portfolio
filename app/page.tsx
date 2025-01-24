@@ -5,7 +5,8 @@ import Education from "@/components/Education";
 import Hero from "@/components/Hero";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import ParticleCanvas from "../components/ParticleCanvas";
+import ParticleCanvas from "@/components/ParticleCanvas";
+import TechnicalSkills from "@/components/TechnicalSkills";
 
 export default function Home() {
   return (
@@ -13,19 +14,16 @@ export default function Home() {
       <ParticleCanvas />
       <Header />
 
-      {/* Hero Section */}
       <Hero />
 
-      {/* Experience Timeline */}
       <Experience />
 
-      {/* Projects Section */}
       <Projects />
 
-      {/* Education Section */}
+      <TechnicalSkills />
+
       <Education />
 
-      {/* Contact Section */}
       <GetInTouch />
 
       <Footer />

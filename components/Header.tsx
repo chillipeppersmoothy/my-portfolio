@@ -1,10 +1,10 @@
 "use client";
 
-import { Laugh } from "lucide-react";
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 import { ThemeToggle } from "./ThemeToggle";
+import Image from "next/image";
 
 const NAV_ITEMS = [
   {
@@ -12,12 +12,12 @@ const NAV_ITEMS = [
     href: "#about",
   },
   {
-    name: "Projects",
-    href: "#projects",
-  },
-  {
     name: "Experience",
     href: "#experience",
+  },
+  {
+    name: "Projects",
+    href: "#projects",
   },
   {
     name: "Education",
@@ -68,7 +68,13 @@ export default function Header() {
     <nav className="sticky top-0 z-50 w-full border-b bg-background/80 backdrop-blur-sm">
       <div className="container mx-auto px-4 py-3">
         <div className="flex items-center justify-between">
-          <Laugh className="h-8 w-8 text-indigo-500 dark:text-indigo-400 animate-bounce" />
+          <Image
+            src="/images/logo.webp"
+            alt="logo"
+            className="rounded-full"
+            width="50"
+            height="50"
+          />
           <motion.nav
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}

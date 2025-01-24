@@ -103,14 +103,15 @@ function ProjectCard({
     <motion.div
       variants={fadeIn}
       key={index}
-      className="group relative bg-gradient-to-br from-background to-muted rounded-lg shadow-lg overflow-hidden cursor-pointer"
+      className="group relative rounded-lg shadow-lg overflow-hidden cursor-pointer"
       onClick={handleClick}
       layoutId={`project-container-${index}`}
       initial={{ scale: 1 }}
       whileHover={{
-        scale: [1, 1.15, 1.1],
+        scale: [1, 1.1, 1.05],
         transition: {
           duration: 0.3,
+          delay: 0.2,
           times: [0, 0.5, 1],
           ease: "easeInOut",
         },
@@ -129,9 +130,9 @@ function ProjectCard({
           className="object-cover transition-transform duration-300"
         />
 
-        <div className="absolute inset-0 bg-gradient-to-br from-transparent to-black/80 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+        <div className="absolute inset-0 bg-gradient-to-br from-transparent to-black/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
           <div className="absolute bottom-4 right-4">
-            <span className="text-purple-400 font-bold px-4 py-2 rounded-full bg-none transition-all duration-500 delay-300 opacity-0 group-hover:opacity-100">
+            <span className="text-purple-400 font-bold px-4 py-2 rounded-full bg-none transition-colors">
               View Project
             </span>
           </div>
@@ -144,16 +145,6 @@ function ProjectCard({
 export default function Projects() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
-  const [isClosing, setIsClosing] = useState(false);
-
-  const handleClose = () => {
-    setIsClosing(true);
-    setTimeout(() => {
-      setSelectedProject(null);
-      setSelectedIndex(null);
-      setIsClosing(false);
-    }, 300); // Match this with the exit animation duration
-  };
 
   return (
     <section className="py-20 bg-none" id="projects">
@@ -185,20 +176,33 @@ export default function Projects() {
           ))}
         </motion.div>
       </div>
-
-      <AnimatePresence mode="wait">
+      <AnimatePresence mode="popLayout">
         {selectedProject && selectedIndex !== null && (
           <Dialog
-            open={!!selectedProject && !isClosing}
-            onOpenChange={handleClose}
+            open={!!selectedProject}
+            onOpenChange={() => {
+              setSelectedProject(null);
+              setSelectedIndex(null);
+            }}
           >
-            <DialogContent className="max-w-5xl p-0 bg-gradient-to-br from-background to-muted overflow-hidden">
+            <DialogContent
+              style={{ animation: "none" }}
+              className="max-w-6xl p-0 bg-gradient-to-br from-background to-muted overflow-hidden"
+              onPointerDownOutside={() => {
+                setSelectedProject(null);
+                setSelectedIndex(null);
+              }}
+              onEscapeKeyDown={() => {
+                setSelectedProject(null);
+                setSelectedIndex(null);
+              }}
+            >
               <div className="flex flex-col md:flex-row">
                 <motion.div
                   layoutId={`project-image-${selectedIndex}`}
-                  className="relative w-full md:w-1/2 h-64 md:h-[500px] p-4"
-                  exit={{ opacity: 1 }}
-                  transition={{ duration: 0.3 }}
+                  className="relative w-full md:w-1/2 h-64 md:h-auto p-8 pr-0"
+                  exit={{ opacity: 0 }} // Force instant removal on exit
+                  transition={{ duration: 0.4 }} // Remove transition delay
                 >
                   <div className="relative w-full h-full rounded-lg overflow-hidden">
                     <Image
@@ -213,8 +217,8 @@ export default function Projects() {
                   className="w-full md:w-1/2 p-6 overflow-y-auto max-h-[80vh]"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 0 }}
-                  transition={{ duration: 0.3, delay: 0.4 }}
+                  exit={{ opacity: 0 }} // Disable exit delay
+                  transition={{ duration: 0 }} // Disable transition delay
                 >
                   <DialogHeader>
                     <motion.div layoutId={`project-content-${selectedIndex}`}>
@@ -264,7 +268,7 @@ export default function Projects() {
                       href={selectedProject.demoUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-block px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 dark:from-purple-600 dark:to-pink-600 text-white rounded-full font-semibold hover:opacity-90 transition"
+                      className="inline-block px-6 py-3 bg-muted text-foreground rounded-full font-semibold transition border border-purple-400 hover:bg-gradient-to-r hover:from-purple-500 hover:to-pink-500 hover:text-white hover:border-transparent"
                     >
                       Visit Project
                     </Link>
@@ -272,7 +276,7 @@ export default function Projects() {
                       href={selectedProject.demoUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-block px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 dark:from-purple-600 dark:to-pink-600 text-white rounded-full font-semibold hover:opacity-90 transition"
+                      className="inline-block px-6 py-3 bg-muted text-foreground rounded-full font-semibold transition border border-purple-400 hover:bg-gradient-to-r hover:from-purple-500 hover:to-pink-500 hover:text-white hover:border-transparent"
                     >
                       View Code
                     </Link>

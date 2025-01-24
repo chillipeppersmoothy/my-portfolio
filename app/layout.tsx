@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   title: "Aditya Shenoy K",
   description: "Full Stack Developer & UI/UX Enthusiast",
   icons: {
-    icon: ["/images/aditya.png"],
+    icon: ["/images/logo.webp"],
   },
 };
 

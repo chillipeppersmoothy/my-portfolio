@@ -71,12 +71,14 @@ function ContactCard({
               }
             />
           ) : (
-            <Copy
-              className={
-                `cursor-pointer text-purple-500 dark:text-pink-400` +
-                (item.title === "Availability" ? " hidden" : "")
-              }
-            />
+            <button>
+              <Copy
+                className={
+                  `cursor-pointer text-purple-500 dark:text-pink-400` +
+                  (item.title === "Availability" ? " hidden" : "")
+                }
+              />
+            </button>
           )}
         </div>
       </div>

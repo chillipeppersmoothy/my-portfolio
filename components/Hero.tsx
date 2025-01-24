@@ -49,7 +49,7 @@ export default function Hero() {
             </motion.div>
           </div>
         </section>
-        {/* About */}
+
         <section className="container mx-auto px-4 z-10 pb-5 pt-20" id="about">
           <div className="flex flex-col md:flex-row items-center justify-between gap-12">
             <motion.div
@@ -59,14 +59,22 @@ export default function Hero() {
               transition={{ duration: 0.8 }}
             >
               <div className="relative w-72 h-72 mx-auto">
-                <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-pink-500 dark:from-purple-600 dark:to-pink-600 rounded-full animate-pulse"></div>
+                <div className="absolute inset-0 rounded-full">
+                  <Image
+                    src="/images/logo.webp"
+                    alt="Profile"
+                    width="400"
+                    height="400"
+                    className="object-cover rounded-full"
+                  />
+                </div>
                 <div className="absolute inset-0 rounded-full overflow-hidden p-2">
                   <Image
                     src="/images/aditya.png"
                     alt="Profile"
-                    fill
-                    className="object-cover rounded-full"
-                    style={{ objectFit: "cover" }}
+                    width="300"
+                    height="300"
+                    className="object-cover"
                   />
                 </div>
               </div>

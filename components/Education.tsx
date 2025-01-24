@@ -40,7 +40,7 @@ export default function Education() {
           <motion.div variants={fadeIn} className="w-full lg:w-1/2 space-y-6">
             <div>
               <GraduationCap className="w-10 h-10 bg-clip-text bg-gradient-to-r from-purple-500 to-pink-500 dark:from-purple-400 dark:to-pink-400 mb-4" />
-              <h3 className="text-xl font-bold text-foreground text-muted-foreground mb-2">
+              <h3 className="text-xl font-bold text-muted-foreground mb-2">
                 Bachelor of Engineering
               </h3>
               <h4 className="text-3xl font-bold text-foreground mb-4">
