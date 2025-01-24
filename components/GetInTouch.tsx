@@ -57,7 +57,7 @@ function ContactCard({
         >
           <p
             className={
-              `text-sm text-muted-foreground px-3  hover:text-white hover:dark:text-black` +
+              `text-sm text-muted-foreground px-3 hover:text-black hover:dark:text-white` +
               (item.title === "Availability" ? " mb-[4px]" : "")
             }
           >

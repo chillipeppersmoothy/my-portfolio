@@ -106,13 +106,17 @@ function ProjectCard({
       className="group relative bg-gradient-to-br from-background to-muted rounded-lg shadow-lg overflow-hidden cursor-pointer"
       onClick={handleClick}
       layoutId={`project-container-${index}`}
+      initial={{ scale: 1 }}
       whileHover={{
-        scale: [1, 1.2, 1.1],
+        scale: [1, 1.15, 1.1],
         transition: {
           duration: 0.3,
           times: [0, 0.5, 1],
+          ease: "easeInOut",
         },
       }}
+      animate={{ scale: 1 }}
+      whileTap={{ scale: 0.95 }}
     >
       <motion.div
         className="relative h-48 md:h-64 w-full overflow-hidden"
@@ -140,6 +144,16 @@ function ProjectCard({
 export default function Projects() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+  const [isClosing, setIsClosing] = useState(false);
+
+  const handleClose = () => {
+    setIsClosing(true);
+    setTimeout(() => {
+      setSelectedProject(null);
+      setSelectedIndex(null);
+      setIsClosing(false);
+    }, 300); // Match this with the exit animation duration
+  };
 
   return (
     <section className="py-20 bg-none" id="projects">
@@ -172,22 +186,19 @@ export default function Projects() {
         </motion.div>
       </div>
 
-      <AnimatePresence mode="popLayout">
+      <AnimatePresence mode="wait">
         {selectedProject && selectedIndex !== null && (
           <Dialog
-            open={!!selectedProject}
-            onOpenChange={() => {
-              setSelectedProject(null);
-              setSelectedIndex(null);
-            }}
+            open={!!selectedProject && !isClosing}
+            onOpenChange={handleClose}
           >
             <DialogContent className="max-w-5xl p-0 bg-gradient-to-br from-background to-muted overflow-hidden">
               <div className="flex flex-col md:flex-row">
                 <motion.div
                   layoutId={`project-image-${selectedIndex}`}
                   className="relative w-full md:w-1/2 h-64 md:h-[500px] p-4"
-                  exit={{ opacity: 0, scale: 0.9 }}
-                  transition={{ duration: 0.3, delay: 0.2 }}
+                  exit={{ opacity: 1 }}
+                  transition={{ duration: 0.3 }}
                 >
                   <div className="relative w-full h-full rounded-lg overflow-hidden">
                     <Image
@@ -203,7 +214,7 @@ export default function Projects() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: 0 }}
-                  transition={{ delay: 0.2, duration: 0.3 }}
+                  transition={{ duration: 0.3, delay: 0.4 }}
                 >
                   <DialogHeader>
                     <motion.div layoutId={`project-content-${selectedIndex}`}>
