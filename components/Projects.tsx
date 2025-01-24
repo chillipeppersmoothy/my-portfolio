@@ -103,9 +103,16 @@ function ProjectCard({
     <motion.div
       variants={fadeIn}
       key={index}
-      className="group relative bg-gradient-to-br from-background to-muted rounded-lg shadow-lg hover:shadow-xl transition-all cursor-pointer overflow-hidden hover:transform hover:scale-110"
+      className="group relative bg-gradient-to-br from-background to-muted rounded-lg shadow-lg overflow-hidden cursor-pointer"
       onClick={handleClick}
       layoutId={`project-container-${index}`}
+      whileHover={{
+        scale: [1, 1.2, 1.1],
+        transition: {
+          duration: 0.3,
+          times: [0, 0.5, 1],
+        },
+      }}
     >
       <motion.div
         className="relative h-48 md:h-64 w-full overflow-hidden"
@@ -117,10 +124,10 @@ function ProjectCard({
           fill
           className="object-cover transition-transform duration-300"
         />
-        {/* Gradient overlay on hover */}
-        <div className="absolute inset-0 bg-gradient-to-br from-transparent to-black/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+
+        <div className="absolute inset-0 bg-gradient-to-br from-transparent to-black/80 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
           <div className="absolute bottom-4 right-4">
-            <span className="text-purple-400 font-bold px-4 py-2 rounded-full bg-none transition-colors">
+            <span className="text-purple-400 font-bold px-4 py-2 rounded-full bg-none transition-all duration-500 delay-300 opacity-0 group-hover:opacity-100">
               View Project
             </span>
           </div>
@@ -165,7 +172,7 @@ export default function Projects() {
         </motion.div>
       </div>
 
-      <AnimatePresence>
+      <AnimatePresence mode="popLayout">
         {selectedProject && selectedIndex !== null && (
           <Dialog
             open={!!selectedProject}
@@ -178,16 +185,26 @@ export default function Projects() {
               <div className="flex flex-col md:flex-row">
                 <motion.div
                   layoutId={`project-image-${selectedIndex}`}
-                  className="relative w-full md:w-1/2 h-64 md:h-auto"
+                  className="relative w-full md:w-1/2 h-64 md:h-[500px] p-4"
+                  exit={{ opacity: 0, scale: 0.9 }}
+                  transition={{ duration: 0.3, delay: 0.2 }}
                 >
-                  <Image
-                    src={selectedProject.image}
-                    alt={selectedProject.title}
-                    fill
-                    className="object-cover"
-                  />
+                  <div className="relative w-full h-full rounded-lg overflow-hidden">
+                    <Image
+                      src={selectedProject.image}
+                      alt={selectedProject.title}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
                 </motion.div>
-                <div className="w-full md:w-1/2 p-6 overflow-y-auto max-h-[80vh]">
+                <motion.div
+                  className="w-full md:w-1/2 p-6 overflow-y-auto max-h-[80vh]"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 0 }}
+                  transition={{ delay: 0.2, duration: 0.3 }}
+                >
                   <DialogHeader>
                     <motion.div layoutId={`project-content-${selectedIndex}`}>
                       <DialogTitle className="text-2xl font-bold text-foreground">
@@ -249,7 +266,7 @@ export default function Projects() {
                       View Code
                     </Link>
                   </div>
-                </div>
+                </motion.div>
               </div>
             </DialogContent>
           </Dialog>

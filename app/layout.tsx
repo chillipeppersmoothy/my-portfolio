@@ -20,7 +20,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-        <link rel="preload" href="/images/nmamit.webp" as="image" />
+      <link rel="preload" href="/images/nmamit.webp" as="image" />
       <body className={inter.className} suppressHydrationWarning>
         <ThemeProvider
           attribute="class"
