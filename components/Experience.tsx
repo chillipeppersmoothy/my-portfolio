@@ -59,9 +59,9 @@ export default function Experience() {
                 }`}
               >
                 <div className="w-1/2 pr-8 pl-8">
-                  <div className="rounded-lg p-px bg-gradient-to-b from-purple-500 to-pink-500 dark:from-purple-400 dark:to-pink-400">
+                  <div className="rounded-lg card">
                     <div
-                      className={`bg-gradient-to-br from-background to-muted p-6 rounded-lg shadow-lg border border-purple-500/20 dark:border-purple-400/20 ${
+                      className={`bg-gradient-to-br from-background to-muted p-6 rounded-lg shadow-lg ${
                         index % 2 === 0 ? "text-right" : ""
                       }`}
                     >

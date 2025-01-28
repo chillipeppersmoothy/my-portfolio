@@ -109,7 +109,7 @@ export default function TechnicalSkills() {
         >
           <motion.div
             variants={fadeIn}
-            className="relative w-full h-64 lg:w-1/2 z-10 rounded-lg p-px bg-gradient-to-b from-purple-500 to-pink-500 dark:from-purple-400 dark:to-pink-400"
+            className="relative w-full h-64 lg:w-1/2 z-10 rounded-lg p-px bg-gradient-to-b card"
           >
             <div className="h-[253px] bg-gradient-to-br from-background to-muted p-6 rounded-lg border border-purple-500/20 flex flex-col justify-between">
               <div>
@@ -137,9 +137,9 @@ export default function TechnicalSkills() {
 
           <motion.div
             variants={fadeIn}
-            className="w-full lg:w-1/2 h-1/2 grid grid-cols-3 sm:grid-cols-4 gap-3 place-self-center" 
+            className="w-full lg:w-1/2 h-1/2 grid grid-cols-3 sm:grid-cols-4 gap-3 place-self-center"
           >
-            {skills.map((skill) => (  
+            {skills.map((skill) => (
               <motion.button
                 key={skill.name}
                 onMouseOver={() => setSelectedSkill(skill)}
