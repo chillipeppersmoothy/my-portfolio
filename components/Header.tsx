@@ -69,13 +69,16 @@ export default function Header() {
     <nav className="sticky top-0 z-50 w-full border-b bg-background/80 backdrop-blur-sm">
       <div className="container mx-auto px-4 py-3">
         <div className="flex items-center justify-between">
-          <Image
-            src="/images/logo.webp"
-            alt="logo"
-            className="rounded-full"
-            width="50"
-            height="50"
-          />
+          <button>
+            <Image
+              src="/images/logo.webp"
+              alt="logo"
+              className="rounded-full"
+              width="50"
+              height="50"
+              onClick={() => scrollToSection("home")}
+            />
+          </button>
           <motion.nav
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}

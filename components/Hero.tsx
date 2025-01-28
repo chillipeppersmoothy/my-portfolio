@@ -12,7 +12,10 @@ export default function Hero() {
   };
 
   return (
-    <section className="min-h-screen flex items-center relative overflow-hidden">
+    <section
+      className="min-h-screen flex items-center relative overflow-hidden"
+      id="home"
+    >
       <div className="flex flex-col items-center justify-center w-full">
         <section className="container mx-auto px-4 z-10 min-h-screen flex justify-center items-center">
           <div className="flex justify-center gap-12 py-10 w-full">
