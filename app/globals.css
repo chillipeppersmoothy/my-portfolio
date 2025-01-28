@@ -130,8 +130,7 @@ h1 {
 .card {
   margin: 0 auto;
   width: 100%;
-  background: #1c1f2b;
-  border-radius: 10px;
+  border-radius: 8px;
   position: relative;
 }
 
@@ -159,8 +158,8 @@ h1 {
   left: 50%;
   translate: -50% -50%;
   z-index: -1;
-  padding: 1px;
-  border-radius: 10px;
+  padding: 2px;
+  border-radius: 8px;
   animation: 5s spin linear infinite;
 }
 .card::before {
@@ -174,4 +173,32 @@ h1 {
   to {
     --angle: 360deg;
   }
+}
+
+/* button gradient */
+.btn-grd {
+  background-color: #161a20;
+  padding: 1em 2em;
+  border-radius: 1000px;
+  border: none;
+  color: white;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-grd::after {
+  content: "";
+  background-image: linear-gradient(to bottom right, #008cff, #e100ff);
+  height: 104%;
+  width: 102%;
+  position: absolute;
+  z-index: -1;
+  border-radius: 1000px;
+}
+
+.btn-grd:hover {
+  z-index: 0;
+  box-shadow: 40px 0 100px #008cff, -40px 0 100px #e100ff;
 }

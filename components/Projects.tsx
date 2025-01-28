@@ -268,7 +268,7 @@ export default function Projects() {
                       href={selectedProject.demoUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-block px-6 py-3 bg-muted text-foreground rounded-full font-semibold transition border border-purple-400 hover:bg-gradient-to-r hover:from-purple-500 hover:to-pink-500 hover:text-white hover:border-transparent"
+                      className="px-6 py-3 text-primary rounded-full font-semibold btn-grd"
                     >
                       Visit Project
                     </Link>
@@ -276,7 +276,7 @@ export default function Projects() {
                       href={selectedProject.demoUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-block px-6 py-3 bg-muted text-foreground rounded-full font-semibold transition border border-purple-400 hover:bg-gradient-to-r hover:from-purple-500 hover:to-pink-500 hover:text-white hover:border-transparent"
+                      className="px-6 py-3 text-primary rounded-full font-semibold btn-grd"
                     >
                       View Code
                     </Link>

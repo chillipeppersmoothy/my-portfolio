@@ -53,20 +53,15 @@ function ContactCard({
         <h3 className="font-semibold text-foreground mb-2">{item.title}</h3>
         <div
           onClick={() => handleCopy(item.content)}
-          className="flex justify-center"
+          className="flex justify-center items-center"
         >
-          <p
-            className={
-              `text-sm text-muted-foreground px-3 hover:text-black hover:dark:text-white` +
-              (item.title === "Availability" ? " mb-[4px]" : "")
-            }
-          >
+          <p className="text-base text-muted-foreground px-3 hover:text-black hover:dark:text-white mb-[5px]">
             {item.content}
           </p>
           {isCopied ? (
             <Check
               className={
-                `cursor-pointer text-purple-500 dark:text-pink-400` +
+                `cursor-pointer text-purple-500 dark:text-pink-400 w-6 h-6 border-[0.5px] p- rounded-sm` +
                 (item.title === "Availability" ? " hidden" : "")
               }
             />
@@ -74,7 +69,7 @@ function ContactCard({
             <button>
               <Copy
                 className={
-                  `cursor-pointer text-purple-500 dark:text-pink-400` +
+                  `cursor-pointer text-purple-500 dark:text-pink-400 w-6 h-6 border-[0.5px] p-1 dark:border-gray-700 border-gray-300 rounded-sm hover:bg-gray-700 hover:dark:bg-gray-700` +
                   (item.title === "Availability" ? " hidden" : "")
                 }
               />
@@ -99,7 +94,7 @@ export default function GetInTouch() {
           Get in Touch
         </motion.h2>
         <motion.div
-          className="grid md:grid-cols-3 gap-10"
+          className="grid md:grid-cols-3 gap-12"
           variants={staggerContainer}
           initial="initial"
           whileInView="animate"

@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 import { ThemeToggle } from "./ThemeToggle";
 import Image from "next/image";
+import { Button } from "./ui/button";
 
 const NAV_ITEMS = [
   {
@@ -81,7 +82,8 @@ export default function Header() {
             className="flex gap-6"
           >
             {NAV_ITEMS.map((item) => (
-              <button
+              <Button
+                variant={"link"}
                 key={item.name}
                 onClick={
                   item.href
@@ -96,7 +98,7 @@ export default function Header() {
                 )}
               >
                 {item.name}
-              </button>
+              </Button>
             ))}
             <ThemeToggle />
           </motion.nav>

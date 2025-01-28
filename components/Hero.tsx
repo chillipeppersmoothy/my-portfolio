@@ -122,11 +122,11 @@ export default function Hero() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.6 }}
               >
-                <button className="px-6 py-3 bg-primary text-primary-foreground rounded-full font-semibold hover:opacity-90 transition transform hover:scale-105">
+                <button className="px-6 py-3 text-primary rounded-full font-semibold btn-grd">
                   View Resume
                 </button>
                 <button
-                  className="px-6 py-3 border-2 border-primary text-primary rounded-full font-semibold hover:bg-primary hover:text-primary-foreground transition transform hover:scale-105"
+                  className="px-6 py-3 text-primary rounded-full font-semibold btn-grd"
                   onClick={() => scrollToSection("getInTouch")}
                 >
                   Contact Me
