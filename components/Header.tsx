@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { ThemeToggle } from "./ThemeToggle";
 import Image from "next/image";
 import { Button } from "./ui/button";
+import { Menu, X } from "lucide-react";
 
 const NAV_ITEMS = [
   {
@@ -36,11 +37,13 @@ const NAV_ITEMS = [
 
 export default function Header() {
   const [activeSection, setActiveSection] = useState<string>("");
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
+      setIsMenuOpen(false);
     }
   };
 
@@ -61,7 +64,6 @@ export default function Header() {
     };
 
     window.addEventListener("scroll", handleScroll);
-
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -69,30 +71,31 @@ export default function Header() {
     <nav className="sticky top-0 z-50 w-full border-b bg-background/80 backdrop-blur-sm">
       <div className="container mx-auto px-4 py-3">
         <div className="flex items-center justify-between">
-          <button>
+          <button
+            onClick={() => scrollToSection("home")}
+            className="relative w-12 h-12"
+          >
             <Image
               src="/images/logo.webp"
               alt="logo"
-              className="rounded-full"
-              width="50"
-              height="50"
-              onClick={() => scrollToSection("home")}
+              className="rounded-full object-cover"
+              fill
+              sizes="(max-width: 48px) 100vw"
+              priority
             />
           </button>
+
+          {/* Desktop Navigation */}
           <motion.nav
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="flex gap-6"
+            className="hidden md:flex gap-6 items-center"
           >
             {NAV_ITEMS.map((item) => (
               <Button
-                variant={"link"}
+                variant="link"
                 key={item.name}
-                onClick={
-                  item.href
-                    ? () => scrollToSection(item.href.substring(1))
-                    : () => {}
-                }
+                onClick={() => scrollToSection(item.href.substring(1))}
                 className={cn(
                   "text-sm font-medium transition-colors hover:text-primary",
                   activeSection === item.href.substring(1)
@@ -105,7 +108,52 @@ export default function Header() {
             ))}
             <ThemeToggle />
           </motion.nav>
+
+          {/* Mobile Navigation Button */}
+          <div className="flex items-center gap-4 md:hidden">
+            <ThemeToggle />
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="md:hidden"
+            >
+              {isMenuOpen ? (
+                <X className="h-6 w-6" />
+              ) : (
+                <Menu className="h-6 w-6" />
+              )}
+            </Button>
+          </div>
         </div>
+
+        {/* Mobile Navigation Menu */}
+        {isMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            className="md:hidden py-4"
+          >
+            <div className="flex flex-col gap-2">
+              {NAV_ITEMS.map((item) => (
+                <Button
+                  variant="ghost"
+                  key={item.name}
+                  onClick={() => scrollToSection(item.href.substring(1))}
+                  className={cn(
+                    "w-full justify-end text-sm font-medium transition-colors hover:text-primary",
+                    activeSection === item.href.substring(1)
+                      ? "text-foreground"
+                      : "text-muted-foreground"
+                  )}
+                >
+                  {item.name}
+                </Button>
+              ))}
+            </div>
+          </motion.div>
+        )}
       </div>
     </nav>
   );
