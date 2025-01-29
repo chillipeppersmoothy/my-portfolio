@@ -85,7 +85,6 @@ export default function Header() {
             />
           </button>
 
-          {/* Desktop Navigation */}
           <motion.nav
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -127,33 +126,35 @@ export default function Header() {
           </div>
         </div>
 
-        {/* Mobile Navigation Menu */}
-        {isMenuOpen && (
+        <div
+          className={cn(
+            "fixed right-0 top-[73px] w-1/3 h-[calc(100vh-73px)] bg-background md:hidden transform transition-transform duration-200 ease-in-out border-l",
+            isMenuOpen ? "translate-x-0" : "translate-x-full"
+          )}
+        >
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="md:hidden py-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: isMenuOpen ? 1 : 0 }}
+            transition={{ duration: 0.2 }}
+            className="flex flex-col gap-2 p-4"
           >
-            <div className="flex flex-col gap-2">
-              {NAV_ITEMS.map((item) => (
-                <Button
-                  variant="ghost"
-                  key={item.name}
-                  onClick={() => scrollToSection(item.href.substring(1))}
-                  className={cn(
-                    "w-full justify-end text-sm font-medium transition-colors hover:text-primary",
-                    activeSection === item.href.substring(1)
-                      ? "text-foreground"
-                      : "text-muted-foreground"
-                  )}
-                >
-                  {item.name}
-                </Button>
-              ))}
-            </div>
+            {NAV_ITEMS.map((item) => (
+              <Button
+                variant="ghost"
+                key={item.name}
+                onClick={() => scrollToSection(item.href.substring(1))}
+                className={cn(
+                  "w-full justify-end text-sm font-medium transition-colors hover:text-primary",
+                  activeSection === item.href.substring(1)
+                    ? "text-foreground"
+                    : "text-muted-foreground"
+                )}
+              >
+                {item.name}
+              </Button>
+            ))}
           </motion.div>
-        )}
+        </div>
       </div>
     </nav>
   );
