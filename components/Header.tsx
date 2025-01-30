@@ -88,7 +88,7 @@ export default function Header() {
           <motion.nav
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="hidden md:flex gap-6 items-center"
+            className="hidden md:flex gap-3 items-center"
           >
             {NAV_ITEMS.map((item) => (
               <Button
@@ -108,7 +108,6 @@ export default function Header() {
             <ThemeToggle />
           </motion.nav>
 
-          {/* Mobile Navigation Button */}
           <div className="flex items-center gap-4 md:hidden">
             <ThemeToggle />
             <Button
@@ -129,7 +128,8 @@ export default function Header() {
         <div
           className={cn(
             "fixed right-0 top-[73px] w-1/3 h-[calc(100vh-73px)] bg-background md:hidden transform transition-transform duration-200 ease-in-out border-l",
-            isMenuOpen ? "translate-x-0" : "translate-x-full"
+            isMenuOpen ? "translate-x-0" : "translate-x-full",
+            !isMenuOpen && "hidden"
           )}
         >
           <motion.div

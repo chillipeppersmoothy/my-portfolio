@@ -187,7 +187,7 @@ export default function Projects() {
           >
             <DialogContent
               style={{ animation: "none" }}
-              className="max-w-6xl p-0 bg-gradient-to-br from-background to-muted overflow-hidden mx-4 sm:mx-8 my-4 sm:my-8 rounded-lg max-h-[90vh] overflow-y-auto"
+              className="max-w-6xl p-0 bg-gradient-to-br from-background to-muted overflow-hidden m-auto rounded-lg max-h-[90vh] overflow-y-hidden"
               onPointerDownOutside={() => {
                 setSelectedProject(null);
                 setSelectedIndex(null);
