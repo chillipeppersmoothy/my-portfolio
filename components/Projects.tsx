@@ -187,7 +187,7 @@ export default function Projects() {
           >
             <DialogContent
               style={{ animation: "none" }}
-              className="max-w-6xl p-0 bg-gradient-to-br from-background to-muted overflow-hidden"
+              className="max-w-6xl p-0 bg-gradient-to-br from-background to-muted overflow-hidden mx-4 sm:mx-8 my-4 sm:my-8 rounded-lg max-h-[90vh] overflow-y-auto"
               onPointerDownOutside={() => {
                 setSelectedProject(null);
                 setSelectedIndex(null);
@@ -200,9 +200,9 @@ export default function Projects() {
               <div className="flex flex-col md:flex-row">
                 <motion.div
                   layoutId={`project-image-${selectedIndex}`}
-                  className="relative w-full md:w-1/2 h-64 md:h-auto p-8 pr-0"
-                  exit={{ opacity: 0 }} // Force instant removal on exit
-                  transition={{ duration: 0.4 }} // Remove transition delay
+                  className="relative w-full md:w-1/2 h-64 md:h-auto p-4 md:p-8 md:pr-0"
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.4 }}
                 >
                   <div className="relative w-full h-full rounded-lg overflow-hidden">
                     <Image
@@ -214,11 +214,11 @@ export default function Projects() {
                   </div>
                 </motion.div>
                 <motion.div
-                  className="w-full md:w-1/2 p-6 overflow-y-auto max-h-[80vh]"
+                  className="w-full md:w-1/2 p-4 md:p-6 overflow-y-auto max-h-[60vh] md:max-h-[80vh]"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0 }} // Disable exit delay
-                  transition={{ duration: 0 }} // Disable transition delay
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0 }}
                 >
                   <DialogHeader>
                     <motion.div layoutId={`project-content-${selectedIndex}`}>

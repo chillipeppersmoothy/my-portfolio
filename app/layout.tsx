@@ -21,7 +21,10 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <link rel="preload" href="/images/nmamit.webp" as="image" />
-      <body className={inter.className} suppressHydrationWarning>
+      <body
+        className={`${inter.className} overflow-y-scroll`}
+        suppressHydrationWarning
+      >
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
