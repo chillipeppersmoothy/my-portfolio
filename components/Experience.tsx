@@ -8,19 +8,26 @@ const EXPERIENCE_DATA = [
     year: "2024-present",
     title: "Senior Software Engineer",
     company: "Accenture",
-    description: "Led development of enterprise applications",
+    description: `Collaborated with clients and architects to design scalable solutions, enhancing system performance by 30%
+                  Worked with UI/UX designer to find the best solution for UI design.
+                  Led a team of 5 engineers to develop a web application that automated Postman test conversions to Playwright, reducing manual effort by 98% and winning 1st place in the Hackathon.
+                  Increased backend unit test coverage to 100% and UI coverage to 80%, improving software reliability.`,
   },
   {
     year: "2022-2024",
     title: "Software Analyst",
     company: "Accenture",
-    description: "Built scalable web applications",
+    description: `Contributed to projects in various capacities, including backend development with NodeJS, Terraform for IAC and AWS. Web GUI using ReactJS and Typescript in a fast-paced le/SCRUM environment.
+                  Implemented an automation script using selenium for one of the applications resulting in a 90% reduction in time.
+                  Optimized test execution by 85% by developing a Playwright-based framework, enabling concurrent policy generation.`,
   },
   {
     year: "2021-2022",
     title: "Associate Software Engineer",
     company: "Accenture",
-    description: "Created responsive web interfaces",
+    description: `Developed and executed manual/functional test cases and test plans for each release cycle, documenting test results and defects using Microsoft ALM and Excel.
+                  Conducted manual, functional, API, regression, integration, smoke testing and provided test reports to stakeholders.
+                  Worked closely with developers to reproduce and isolate issues and validate fixes before they are released to production. `,
   },
 ];
 

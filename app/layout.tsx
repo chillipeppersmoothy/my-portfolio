@@ -21,6 +21,12 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <link rel="preload" href="/images/nmamit.webp" as="image" />
+      <link rel="preload" href="/images/hired.png" as="image" />
+      <link rel="preload" href="/images/forecast-fusion.png" as="image" />
+      <link rel="preload" href="/images/meme-scroll.png" as="image" />
+      <link rel="preload" href="/images/my-store.png" as="image" />
+      <link rel="preload" href="/images/splitz.png" as="image" />
+      <link rel="preload" href="/images/youtube-clone.png" as="image" />
       <body
         className={`${inter.className} overflow-y-scroll`}
         suppressHydrationWarning

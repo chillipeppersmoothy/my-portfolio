@@ -103,21 +103,29 @@ export default function Hero() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
               >
-                Passionate about creating beautiful and functional web
-                experiences. With expertise in modern web technologies and a
-                keen eye for design, I bring ideas to life through clean code
-                and intuitive interfaces.
+                {`I'm a passionate software engineer who thrives on building products that people love.
+                My focus is on creating intuitive, visually stunning, 
+                and high-impact solutions that address real-world problems.`}
               </motion.p>
               <motion.p
-                className="text-muted-foreground mb-8 leading-relaxed"
+                className="text-xl mb-8 text-muted-foreground"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.4 }}
               >
-                Passionate about creating beautiful and functional web
-                experiences. With expertise in modern web technologies and a
-                keen eye for design, I bring ideas to life through clean code
-                and intuitive interfaces.
+                I believe in shipping fast and getting products into users hands
+                quickly and refining them based on feedback, rather than aiming
+                for perfection from the start. This approach allows me to
+                deliver value efficiently while continuously improving user
+                experience.
+              </motion.p>
+              <motion.p
+                className="text-muted-foreground mb-8 leading-relaxed text-xl"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.6 }}
+              >
+                {`I'm always seeking new challenges and opportunities to grow, learn, and innovate. Whether it's mastering a new technology, optimizing performance, or solving complex problems, I'm excited about the endless possibilities that lie ahead.`}
               </motion.p>
               <motion.div
                 className="flex gap-4"
@@ -126,7 +134,7 @@ export default function Hero() {
                 transition={{ duration: 0.5, delay: 0.6 }}
               >
                 <button className="px-6 py-3 text-primary rounded-full font-semibold btn-grd">
-                  View Resume
+                  Download Resume
                 </button>
                 <button
                   className="px-6 py-3 text-primary rounded-full font-semibold btn-grd"

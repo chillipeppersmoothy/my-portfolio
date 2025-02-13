@@ -1,6 +1,7 @@
 import { Button } from "./ui/button";
 import Link from "next/link";
-import { Github, Instagram, Linkedin, Twitter } from "lucide-react";
+import { Github, Linkedin } from "lucide-react";
+import { SiLeetcode } from "react-icons/si";
 
 const FOOTER_ITEMS = [
   {
@@ -14,14 +15,9 @@ const FOOTER_ITEMS = [
     href: "https://www.linkedin.com/in/aditya-shenoy-k-a78119178/",
   },
   {
-    icon: Instagram,
-    title: "Instagram",
-    href: "https://instagram.com/yourusername",
-  },
-  {
-    icon: Twitter,
-    title: "Twitter",
-    href: "https://github.com/yourusername",
+    icon: SiLeetcode,
+    title: "Leetcode",
+    href: "https://leetcode.com/u/adityashenoy11/",
   },
 ];
 

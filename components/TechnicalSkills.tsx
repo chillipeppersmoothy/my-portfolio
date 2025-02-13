@@ -14,7 +14,19 @@ const skills: Skill[] = [
   {
     name: "TypeScript",
     description:
-      "TypeScript is my preferred language for building applications for the Web, in team settings. The type system helps me catch bugs before they happen, and the language is very expressive.",
+      "TypeScript is my preferred language for building applications for the Web. The type system helps me catch bugs before they happen, and the language is very expressive.",
+    proficiency: 5,
+  },
+  {
+    name: "HTML5",
+    description:
+      "HTML was the first language I learned when I started learning programming. Over the last 4 years, I have used it to build websites and web applications.",
+    proficiency: 5,
+  },
+  {
+    name: "CSS3",
+    description:
+      "My expertise in CSS is one of the things that sets me apart from other developers. I have a deep understanding of the CSS box model, flexbox, grid, and responsive design.",
     proficiency: 5,
   },
   {
@@ -24,64 +36,52 @@ const skills: Skill[] = [
     proficiency: 5,
   },
   {
-    name: "Node.js",
+    name: "AWS",
+    description:
+      "Experienced in cloud architecture and deployment using various AWS services including S3, Lambda, SQS and dynamodb.",
+    proficiency: 4,
+  },
+  {
+    name: "NodeJS",
     description:
       "Proficient in building scalable backend services with Node.js, including REST APIs, real-time applications, and microservices.",
-    proficiency: 4,
+    proficiency: 3,
+  },
+  {
+    name: "NextJS",
+    description:
+      "Fairly new to in building scalable web applications using Next.js, leveraging server-side rendering (SSR), static site generation (SSG), SEO, and user experience.",
+    proficiency: 2,
   },
   {
     name: "Python",
     description:
       "Strong foundation in Python development, particularly in data processing, automation, and building backend services.",
-    proficiency: 4,
-  },
-  {
-    name: "PostgreSQL",
-    description:
-      "Expert in database design, optimization, and complex queries. Experience with both traditional SQL and modern JSON capabilities.",
-    proficiency: 4,
-  },
-  {
-    name: "AWS",
-    description:
-      "Experienced in cloud architecture and deployment using various AWS services including EC2, S3, Lambda, and ECS.",
-    proficiency: 4,
+    proficiency: 3,
   },
   {
     name: "Docker",
     description:
-      "Proficient in containerization and orchestration, creating efficient multi-stage builds and managing container lifecycles.",
-    proficiency: 4,
-  },
-  {
-    name: "GraphQL",
-    description:
-      "Experience in designing and implementing GraphQL APIs, including schema design and performance optimization.",
-    proficiency: 3,
+      "Fairly new to containerization and orchestration, creating efficient multi-stage builds and managing container lifecycles.",
+    proficiency: 2,
   },
   {
     name: "MongoDB",
     description:
       "Skilled in NoSQL database design and optimization, including aggregation pipelines and indexing strategies.",
-    proficiency: 4,
+    proficiency: 2,
   },
   {
     name: "Redis",
     description:
       "Proficient in using Redis for caching, session management, and real-time features in high-traffic applications.",
-    proficiency: 3,
+    proficiency: 2,
   },
   {
     name: "Kafka",
     description:
-      "Experience with event-driven architectures and stream processing using Apache Kafka.",
-    proficiency: 3,
-  },
-  {
-    name: "gRPC",
-    description:
-      "Knowledge of building efficient microservices communication using gRPC and protocol buffers.",
-    proficiency: 3,
+      "Proficient with event-driven architectures and stream processing using Apache Kafka.",
+    proficiency: 2,
   },
 ];
 

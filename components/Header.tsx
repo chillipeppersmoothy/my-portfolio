@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import { ThemeToggle } from "./ThemeToggle";
 import Image from "next/image";
 import { Button } from "./ui/button";
-import { Menu, X } from "lucide-react";
+import { ArrowDownToLine, Menu, X } from "lucide-react";
 
 const NAV_ITEMS = [
   {
@@ -90,21 +90,43 @@ export default function Header() {
             animate={{ opacity: 1, y: 0 }}
             className="hidden md:flex gap-3 items-center"
           >
-            {NAV_ITEMS.map((item) => (
-              <Button
-                variant="link"
-                key={item.name}
-                onClick={() => scrollToSection(item.href.substring(1))}
-                className={cn(
-                  "text-sm font-medium transition-colors hover:text-primary",
-                  activeSection === item.href.substring(1)
-                    ? "text-foreground"
-                    : "text-muted-foreground"
-                )}
-              >
-                {item.name}
-              </Button>
-            ))}
+            {NAV_ITEMS.map((item) =>
+              item.name === "Resume" ? (
+                <a
+                  href="/assets/aditya-shenoy-k.pdf"
+                  download="aditya-shenoy-k.pdf"
+                  key={item.name}
+                >
+                  <Button
+                    variant="link"
+                    onClick={() => scrollToSection(item.href.substring(1))}
+                    className={cn(
+                      "text-sm font-medium transition-colors hover:text-primary",
+                      activeSection === item.href.substring(1)
+                        ? "text-foreground"
+                        : "text-muted-foreground"
+                    )}
+                  >
+                    {item.name}
+                    <ArrowDownToLine />
+                  </Button>
+                </a>
+              ) : (
+                <Button
+                  variant="link"
+                  key={item.name}
+                  onClick={() => scrollToSection(item.href.substring(1))}
+                  className={cn(
+                    "text-sm font-medium transition-colors hover:text-primary",
+                    activeSection === item.href.substring(1)
+                      ? "text-foreground"
+                      : "text-muted-foreground"
+                  )}
+                >
+                  {item.name}
+                </Button>
+              )
+            )}
             <ThemeToggle />
           </motion.nav>
 

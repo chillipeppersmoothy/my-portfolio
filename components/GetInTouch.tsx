@@ -12,14 +12,14 @@ const CONTACT_ITEMS = [
     content: "adityashenoy11@gmail.com",
   },
   {
-    icon: Calendar,
-    title: "Availability",
-    content: "Mon-Sat, 9AM-10PM",
-  },
-  {
     icon: Phone,
     title: "Mobile",
     content: "+91 8073262953",
+  },
+  {
+    icon: Calendar,
+    title: "Availability",
+    content: "Mon-Sat, 9AM-10PM",
   },
 ];
 
