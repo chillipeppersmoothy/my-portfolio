@@ -9,6 +9,15 @@ export default function About() {
     }
   };
 
+  const handleDownload = async () => {
+    const link = document.createElement("a");
+    link.href = "/assets/aditya-shenoy-k.pdf";
+    link.setAttribute("download", "Aditya Shenoy K");
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <section className="container mx-auto px-4 z-10 pb-5 pt-20" id="about">
       <div className="flex flex-col md:flex-row items-center justify-between gap-12">
@@ -89,7 +98,10 @@ export default function About() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.6 }}
           >
-            <button className="px-6 py-3 text-primary rounded-full font-semibold btn-grd">
+            <button
+              className="px-6 py-3 text-primary rounded-full font-semibold btn-grd"
+              onClick={handleDownload}
+            >
               Download Resume
             </button>
             <button

@@ -69,7 +69,7 @@ function ContactCard({
             <button>
               <Copy
                 className={
-                  `cursor-pointer text-purple-500 dark:text-pink-400 w-6 h-6 border-[0.5px] p-1 dark:border-gray-700 border-gray-300 rounded-sm hover:bg-gray-700 hover:dark:bg-gray-700` +
+                  `cursor-pointer text-purple-500 dark:text-pink-400 w-6 h-6 border-[0.5px] p-1 dark:border-gray-700 border-gray-200 rounded-sm hover:bg-gray-300 hover:dark:bg-gray-700` +
                   (item.title === "Availability" ? " hidden" : "")
                 }
               />

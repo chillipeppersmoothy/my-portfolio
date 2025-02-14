@@ -47,6 +47,15 @@ export default function Header() {
     }
   };
 
+  const handleDownload = async () => {
+    const link = document.createElement("a");
+    link.href = "/assets/aditya-shenoy-k.pdf";
+    link.setAttribute("download", "Aditya Shenoy K");
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   useEffect(() => {
     const handleScroll = () => {
       const sections = NAV_ITEMS.map((item) => item.href.substring(1));
@@ -92,25 +101,23 @@ export default function Header() {
           >
             {NAV_ITEMS.map((item) =>
               item.name === "Resume" ? (
-                <a
-                  href="/assets/aditya-shenoy-k.pdf"
-                  download="aditya-shenoy-k.pdf"
+                <Button
+                  variant="link"
                   key={item.name}
+                  onClick={() => {
+                    scrollToSection(item.href.substring(1));
+                    handleDownload();
+                  }}
+                  className={cn(
+                    "text-sm font-medium transition-colors hover:text-primary",
+                    activeSection === item.href.substring(1)
+                      ? "text-foreground"
+                      : "text-muted-foreground"
+                  )}
                 >
-                  <Button
-                    variant="link"
-                    onClick={() => scrollToSection(item.href.substring(1))}
-                    className={cn(
-                      "text-sm font-medium transition-colors hover:text-primary",
-                      activeSection === item.href.substring(1)
-                        ? "text-foreground"
-                        : "text-muted-foreground"
-                    )}
-                  >
-                    {item.name}
-                    <ArrowDownToLine />
-                  </Button>
-                </a>
+                  {item.name}
+                  <ArrowDownToLine />
+                </Button>
               ) : (
                 <Button
                   variant="link"
