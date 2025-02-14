@@ -186,6 +186,8 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
 
 .btn-grd::after {
@@ -201,4 +203,15 @@ h1 {
 .btn-grd:hover {
   z-index: 0;
   box-shadow: 40px 0 100px #008cff, -40px 0 100px #e100ff;
+}
+
+/* Remove focus styles for all buttons */
+button {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+/* Remove focus outline for all elements */
+* {
+  -webkit-tap-highlight-color: transparent;
 }
