@@ -219,7 +219,7 @@ export default function Projects() {
           >
             <DialogContent
               style={{ animation: "none" }}
-              className="max-w-7xl p-0 bg-gradient-to-br from-background to-muted overflow-hidden m-auto rounded-lg max-h-[90vh] overflow-y-hidden"
+              className="max-w-7xl p-0 bg-gradient-to-br from-background to-muted overflow-hidden m-auto rounded-lg max-h-[90vh] overflow-y-auto"
               onPointerDownOutside={() => {
                 setSelectedProject(null);
                 setSelectedIndex(null);
@@ -232,16 +232,17 @@ export default function Projects() {
               <div className="flex flex-col md:flex-row">
                 <motion.div
                   layoutId={`project-image-${selectedIndex}`}
-                  className="relative w-full md:w-2/3 h-64 md:h-auto p-4 md:p-8 md:pr-0"
+                  className="relative w-full md:w-3/4 h-[400px] md:h-full p-4 md:p-8 md:pr-0"
                   exit={{ opacity: 0 }}
                   transition={{ duration: 0.4 }}
                 >
-                  <div className="relative w-full h-full rounded-lg overflow-hidden flex items-center">
+                  <div className="relative w-full h-full rounded-lg overflow-hidden">
                     <Image
                       src={selectedProject.image}
                       alt={selectedProject.title}
                       fill
-                      className="object-cover"
+                      className="object-contain"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 66vw"
                     />
                   </div>
                 </motion.div>

@@ -47,52 +47,45 @@ export default function Experience() {
         >
           Experience
         </motion.h2>
-        <div className="relative">
-          <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-purple-500 to-pink-500 dark:from-purple-600 dark:to-pink-600 hidden md:block" />
-
-          <motion.div
-            className="space-y-8 md:space-y-12"
-            variants={staggerContainer}
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true }}
-          >
-            {EXPERIENCE_DATA.map((item, index) => (
-              <motion.div
-                key={index}
-                variants={fadeIn}
-                className={`flex flex-col md:flex-row items-center ${
-                  index % 2 === 0 ? "md:flex-row-reverse" : ""
-                }`}
-              >
-                <div className="w-full md:w-1/2 px-4 md:px-8">
-                  <div className="rounded-lg p-px card">
-                    <div
-                      className={`bg-gradient-to-br p-6 rounded-lg shadow-lg ${
-                        index % 2 === 0 ? "md:text-right" : ""
-                      }`}
-                    >
-                      <span className="text-sm bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-pink-500 dark:from-purple-400 dark:to-pink-400 font-semibold">
-                        {item.year}
-                      </span>
-                      <h3 className="text-xl font-bold mt-1 text-foreground">
+        <motion.div
+          className="space-y-8"
+          variants={staggerContainer}
+          initial="initial"
+          whileInView="animate"
+          viewport={{ once: true }}
+        >
+          {EXPERIENCE_DATA.map((item, index) => (
+            <motion.div key={index} variants={fadeIn} className="relative">
+              <div className="card backdrop-blur-sm rounded-lg p-px transition-colors shadow-lg">
+                <div className="bg-gradient-to-br from-background to-muted rounded-lg p-6 shadow-lg">
+                  <div className="flex flex-col md:flex-row gap-4 md:items-center md:justify-between mb-4">
+                    <div>
+                      <h3 className="text-2xl font-bold text-foreground mb-1">
                         {item.title}
                       </h3>
-                      <p className="text-muted-foreground mt-1">
+                      <p className="text-xl text-transparent bg-clip-text bg-gradient-to-r from-primary to-purple-500 dark:from-purple-400 dark:to-pink-400">
                         {item.company}
                       </p>
-                      <p className="text-sm text-muted-foreground mt-2">
-                        {item.description}
-                      </p>
                     </div>
+                    <span className="inline-flex items-center rounded-full bg-purple-500/10 px-3 py-1 text-sm font-medium text-purple-400 ring-1 ring-inset ring-purple-500/20">
+                      {item.year}
+                    </span>
+                  </div>
+                  <div className="space-y-2">
+                    {item.description.split("\n").map((desc, i) => (
+                      <p
+                        key={i}
+                        className="text-muted-foreground leading-relaxed"
+                      >
+                        • {desc.trim()}
+                      </p>
+                    ))}
                   </div>
                 </div>
-                {/* Timeline dot - shown on all screens */}
-                <div className="w-4 h-4 bg-gradient-to-r from-purple-500 to-pink-500 dark:from-purple-600 dark:to-pink-600 rounded-full border-4 border-background my-4 md:my-0" />
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
       </div>
     </section>
   );
