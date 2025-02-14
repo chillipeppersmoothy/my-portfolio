@@ -232,11 +232,11 @@ export default function Projects() {
               <div className="flex flex-col md:flex-row">
                 <motion.div
                   layoutId={`project-image-${selectedIndex}`}
-                  className="relative w-full md:w-3/4 h-[400px] md:h-full p-4 md:p-8 md:pr-0"
+                  className="relative w-full md:w-3/4 h-min md:h-full p-4 md:p-8 md:pr-0"
                   exit={{ opacity: 0 }}
                   transition={{ duration: 0.4 }}
                 >
-                  <div className="relative w-full h-full rounded-lg overflow-hidden">
+                  <div className="relative w-full min-h-[300px] p-3 rounded-lg overflow-hidden">
                     <Image
                       src={selectedProject.image}
                       alt={selectedProject.title}
@@ -298,7 +298,7 @@ export default function Projects() {
                       href={selectedProject.demoUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="px-6 py-3 text-primary rounded-full font-semibold btn-grd"
+                      className="px-1 sm:px-3 md:px-4 py-1 sm:py-2 md:py-3 text-primary rounded-full font-semibold btn-grd"
                     >
                       Visit Project
                     </Link>
@@ -306,7 +306,7 @@ export default function Projects() {
                       href={selectedProject.githubUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="px-6 py-3 text-primary rounded-full font-semibold btn-grd"
+                      className="px-1 sm:px-3 md:px-4 py-1 sm:py-2 md:py-3 text-primary rounded-full font-semibold btn-grd"
                     >
                       View Code
                     </Link>

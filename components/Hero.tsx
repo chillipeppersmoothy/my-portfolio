@@ -35,7 +35,7 @@ export default function Hero() {
                 Aditya Shenoy K
               </motion.h1>
               <motion.p
-                className="text-2xl self-start mb-8 text-muted-foreground"
+                className="text-lg sm:text-xl md:text-2xl self-start mb-8 text-muted-foreground"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.2 }}

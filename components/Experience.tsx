@@ -67,7 +67,7 @@ export default function Experience() {
                         {item.company}
                       </p>
                     </div>
-                    <span className="inline-flex items-center rounded-full bg-purple-500/10 px-3 py-1 text-sm font-medium text-purple-400 ring-1 ring-inset ring-purple-500/20">
+                    <span className="inline-flex w-fit items-center rounded-full bg-purple-500/10 px-3 py-1 text-sm font-medium text-purple-400 ring-1 ring-inset ring-purple-500/20">
                       {item.year}
                     </span>
                   </div>
