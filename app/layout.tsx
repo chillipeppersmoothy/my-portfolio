@@ -9,6 +9,9 @@ export const metadata: Metadata = {
   title: "Aditya Shenoy K | Full Stack Developer",
   description:
     "Full Stack Developer & UI/UX Enthusiast with expertise in React, TypeScript, Node.js, and AWS. View my portfolio to see my latest projects and experience.",
+    icons: {
+      icon: ["/images/logo.webp"],
+    },
   keywords: [
     "Full Stack Developer",
     "UI/UX Developer",
