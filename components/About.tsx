@@ -35,6 +35,7 @@ export default function About() {
                 width="400"
                 height="400"
                 className="object-cover rounded-full"
+                priority={true}
               />
             </div>
             <div className="absolute inset-0 rounded-full overflow-hidden p-2">
@@ -99,13 +100,13 @@ export default function About() {
             transition={{ duration: 0.5, delay: 0.6 }}
           >
             <button
-              className="px-1 sm:px-3 md:px-4 py-1 sm:py-2 md:py-3 text-primary rounded-full font-semibold btn-grd"
+              className="px-6 py-3 text-primary rounded-full font-semibold btn-grd"
               onClick={handleDownload}
             >
               Download Resume
             </button>
             <button
-              className="px-1 sm:px-3 md:px-4 py-1 sm:py-2 md:py-3 text-primary rounded-full font-semibold btn-grd"
+              className="px-6 py-3 text-primary rounded-full font-semibold btn-grd"
               onClick={() => scrollToSection("getInTouch")}
             >
               Contact Me

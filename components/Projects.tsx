@@ -160,8 +160,11 @@ function ProjectCard({
           alt={project.title}
           fill
           className="object-cover transition-transform duration-300"
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          loading="lazy"
+          placeholder="blur"
+          blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDABQODxIPDRQSEBIXFRQdHx4eHRoaHSQrJyEkKSM4Mjc1NjM4PTEwPDUxMC41Nk9ROFZJSG5dYXNmUVZscWRiYWP/2wBDARUXFx4aHR4eHWNTOFNjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAb/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
         />
-
         <div className="absolute inset-0 bg-gradient-to-br from-transparent to-black/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
           <div className="absolute bottom-4 right-4">
             <span className="text-purple-400 font-bold px-4 py-2 rounded-full bg-none transition-colors">
@@ -232,17 +235,17 @@ export default function Projects() {
               <div className="flex flex-col md:flex-row">
                 <motion.div
                   layoutId={`project-image-${selectedIndex}`}
-                  className="relative w-full md:w-3/4 h-min md:h-full p-4 md:p-8 md:pr-0"
+                  className="relative w-full md:w-3/4 h-[400px] md:h-full p-4 md:p-8 md:pr-0"
                   exit={{ opacity: 0 }}
                   transition={{ duration: 0.4 }}
                 >
-                  <div className="relative w-full min-h-[300px] p-3 rounded-lg overflow-hidden">
+                  <div className="relative w-full h-full rounded-lg overflow-hidden">
                     <Image
                       src={selectedProject.image}
                       alt={selectedProject.title}
                       fill
                       className="object-contain"
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 66vw"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     />
                   </div>
                 </motion.div>
@@ -298,7 +301,7 @@ export default function Projects() {
                       href={selectedProject.demoUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="px-1 sm:px-3 md:px-4 py-1 sm:py-2 md:py-3 text-primary rounded-full font-semibold btn-grd"
+                      className="px-6 py-3 text-primary rounded-full font-semibold btn-grd"
                     >
                       Visit Project
                     </Link>
@@ -306,7 +309,7 @@ export default function Projects() {
                       href={selectedProject.githubUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="px-1 sm:px-3 md:px-4 py-1 sm:py-2 md:py-3 text-primary rounded-full font-semibold btn-grd"
+                      className="px-6 py-3 text-primary rounded-full font-semibold btn-grd"
                     >
                       View Code
                     </Link>
