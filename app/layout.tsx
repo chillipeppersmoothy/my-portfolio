@@ -1,7 +1,7 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import { ThemeProvider } from "./providers";
+import { Providers } from "./providers";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -9,14 +9,15 @@ export const metadata: Metadata = {
   title: "Aditya Shenoy K | Full Stack Developer",
   description:
     "Full Stack Developer & UI/UX Enthusiast with expertise in React, TypeScript, Node.js, and AWS. View my portfolio to see my latest projects and experience.",
-    icons: {
-      icon: ["/images/logo.webp"],
-    },
+  icons: {
+    icon: ["/images/logo.webp"],
+  },
   keywords: [
     "Full Stack Developer",
     "UI/UX Developer",
     "React Developer",
     "TypeScript",
+    "Next.js",
     "Node.js",
     "AWS",
   ],
@@ -87,14 +88,14 @@ export default function RootLayout({
         className={`${inter.className} overflow-y-scroll`}
         suppressHydrationWarning
       >
-        <ThemeProvider
+        <Providers
           attribute="class"
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
         >
           {children}
-        </ThemeProvider>
+        </Providers>
       </body>
     </html>
   );
