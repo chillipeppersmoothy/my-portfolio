@@ -222,7 +222,7 @@ export default function Projects() {
           >
             <DialogContent
               style={{ animation: "none" }}
-              className="max-w-7xl p-0 bg-gradient-to-br from-background to-muted overflow-hidden m-auto rounded-lg max-h-[90vh] overflow-y-auto"
+              className="max-w-7xl p-0 bg-gradient-to-br from-background to-muted overflow-hidden m-auto rounded-lg max-h-[75vh] overflow-y-auto"
               onPointerDownOutside={() => {
                 setSelectedProject(null);
                 setSelectedIndex(null);
@@ -232,10 +232,10 @@ export default function Projects() {
                 setSelectedIndex(null);
               }}
             >
-              <div className="flex flex-col md:flex-row">
+              <div className="flex flex-col md:flex-row m-2">
                 <motion.div
                   layoutId={`project-image-${selectedIndex}`}
-                  className="relative w-full md:w-3/4 h-[400px] md:h-full p-4 md:p-8 md:pr-0"
+                  className="relative w-full md:w-3/4 min-h-[200px] md:h-full p-4 md:p-8 md:pr-0"
                   exit={{ opacity: 0 }}
                   transition={{ duration: 0.4 }}
                 >

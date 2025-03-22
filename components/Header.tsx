@@ -99,41 +99,28 @@ export default function Header() {
             animate={{ opacity: 1, y: 0 }}
             className="hidden md:flex gap-3 items-center"
           >
-            {NAV_ITEMS.map((item) =>
-              item.name === "Resume" ? (
-                <Button
-                  variant="link"
-                  key={item.name}
-                  onClick={() => {
-                    scrollToSection(item.href.substring(1));
-                    handleDownload();
-                  }}
-                  className={cn(
-                    "text-sm font-medium transition-colors hover:text-primary",
-                    activeSection === item.href.substring(1)
-                      ? "text-foreground"
-                      : "text-muted-foreground"
-                  )}
-                >
-                  {item.name}
-                  <ArrowDownToLine />
-                </Button>
-              ) : (
-                <Button
-                  variant="link"
-                  key={item.name}
-                  onClick={() => scrollToSection(item.href.substring(1))}
-                  className={cn(
-                    "text-sm font-medium transition-colors hover:text-primary",
-                    activeSection === item.href.substring(1)
-                      ? "text-foreground"
-                      : "text-muted-foreground"
-                  )}
-                >
-                  {item.name}
-                </Button>
-              )
-            )}
+            {NAV_ITEMS.map((item) => (
+              <Button
+                variant="link"
+                key={item.name}
+                onClick={
+                  item.name === "Resume"
+                    ? () => {
+                        scrollToSection(item.href.substring(1));
+                        handleDownload();
+                      }
+                    : () => scrollToSection(item.href.substring(1))
+                }
+                className={cn(
+                  "text-sm font-medium transition-colors hover:text-primary",
+                  activeSection === item.href.substring(1)
+                    ? "text-foreground"
+                    : "text-muted-foreground"
+                )}
+              >
+                {item.name}
+              </Button>
+            ))}
             <ThemeToggle />
           </motion.nav>
 
@@ -171,7 +158,14 @@ export default function Header() {
               <Button
                 variant="ghost"
                 key={item.name}
-                onClick={() => scrollToSection(item.href.substring(1))}
+                onClick={
+                  item.name === "Resume"
+                    ? () => {
+                        scrollToSection(item.href.substring(1));
+                        handleDownload();
+                      }
+                    : () => scrollToSection(item.href.substring(1))
+                }
                 className={cn(
                   "w-full justify-end text-sm font-medium transition-colors hover:text-primary",
                   activeSection === item.href.substring(1)
