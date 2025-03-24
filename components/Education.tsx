@@ -51,7 +51,7 @@ export default function Education() {
             <h5 className="text-lg bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-pink-500 dark:from-purple-400 dark:to-pink-400">
               2016 - 2020
             </h5>
-            <h5 className="text-lg text-muted-foreground">CGPA: 8.7</h5>
+            <h5 className="text-lg text-muted-foreground">CGPA: 8.59</h5>
           </motion.div>
         </motion.div>
       </div>
