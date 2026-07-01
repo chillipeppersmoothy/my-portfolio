@@ -5,6 +5,18 @@ import { motion } from "framer-motion";
 
 const EXPERIENCE_DATA = [
   {
+    year: "2025-present",
+    title: "Senior Software Engineer",
+    company: "Nike",
+    description: `Optimized bulk export system - Reduced CSV/Excel export time from ~1 hour to under 2 minutes through parallel processing and data-fetching re-architecture.
+                  Integrated Splunk analytics with customizable dashboards, enabling product teams to track adoption, material usage, and user behavior in real time.
+                  Led AWS OpenSearch Serverless migration - Achieved zero downtime and zero data loss across services, reducing infrastructure costs and eliminating manual cluster management.
+                  Built a config-driven schema system for material types using JSON Schema, allowing new categories to be added without frontend code changes.
+                  End-to-end workflows for supplier assignment, lifecycle tracking, approvals, cost tracking, notifications, and chat - establishing the single authoritative source of truth.
+                  Designed a natural language search engine - Enabled intuitive material discovery by translating everyday queries (e.g., “lightweight breathable mesh”) into structured OpenSearch results.
+                  QR Code Implementation - Connected physical samples to digital records with scannable codes.`,
+  },
+  {
     year: "2024-present",
     title: "Senior Software Engineer",
     company: "Accenture",
