@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 const EXPERIENCE_DATA = [
   {
     year: "2025-present",
-    title: "Senior Software Engineer",
+    title: "Software Engineer - II",
     company: "Nike",
     description: `Optimized bulk export system - Reduced CSV/Excel export time from ~1 hour to under 2 minutes through parallel processing and data-fetching re-architecture.
                   Integrated Splunk analytics with customizable dashboards, enabling product teams to track adoption, material usage, and user behavior in real time.

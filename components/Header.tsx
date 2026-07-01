@@ -57,22 +57,28 @@ export default function Header() {
   };
 
   useEffect(() => {
+    const sections = NAV_ITEMS.map((item) => item.href.substring(1));
+    let ticking = false;
+
     const handleScroll = () => {
-      const sections = NAV_ITEMS.map((item) => item.href.substring(1));
-      const current = sections.find((section) => {
-        const element = document.getElementById(section);
-        if (element) {
-          const rect = element.getBoundingClientRect();
-          return rect.top <= 100 && rect.bottom >= 100;
-        }
-        return false;
-      });
-      if (current) {
-        setActiveSection(current);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const current = sections.find((section) => {
+            const element = document.getElementById(section);
+            if (element) {
+              const rect = element.getBoundingClientRect();
+              return rect.top <= 100 && rect.bottom >= 100;
+            }
+            return false;
+          });
+          setActiveSection(current ?? "");
+          ticking = false;
+        });
+        ticking = true;
       }
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -115,7 +121,7 @@ export default function Header() {
                   "text-sm font-medium transition-colors hover:text-primary",
                   activeSection === item.href.substring(1)
                     ? "text-foreground"
-                    : "text-muted-foreground"
+                    : "text-muted-foreground",
                 )}
               >
                 {item.name}
@@ -145,7 +151,7 @@ export default function Header() {
           className={cn(
             "fixed right-0 top-[73px] w-1/3 h-[calc(100vh-73px)] bg-background md:hidden transform transition-transform duration-200 ease-in-out border-l",
             isMenuOpen ? "translate-x-0" : "translate-x-full",
-            !isMenuOpen && "hidden"
+            !isMenuOpen && "hidden",
           )}
         >
           <motion.div
@@ -170,7 +176,7 @@ export default function Header() {
                   "w-full justify-end text-sm font-medium transition-colors hover:text-primary",
                   activeSection === item.href.substring(1)
                     ? "text-foreground"
-                    : "text-muted-foreground"
+                    : "text-muted-foreground",
                 )}
               >
                 {item.name}

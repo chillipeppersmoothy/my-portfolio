@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import Particles, { initParticlesEngine } from "@tsparticles/react";
-import { type Container, type ISourceOptions } from "@tsparticles/engine";
+import { type ISourceOptions } from "@tsparticles/engine";
 import { loadSlim } from "@tsparticles/slim";
 import { particleObject } from "./../public/assets/particleObject";
 
@@ -17,20 +17,11 @@ export default function ParticleCanvas() {
     });
   }, []);
 
-  const particlesLoaded = async (container?: Container): Promise<void> => {};
-
-  const options: ISourceOptions = useMemo(() => particleObject, []);
+  const options: ISourceOptions = particleObject;
 
   if (init) {
-    return (
-      <Particles
-        id="tsparticles"
-        particlesLoaded={particlesLoaded}
-        options={options}
-        className="z-[-10]"
-      />
-    );
+    return <Particles id="tsparticles" options={options} className="z-[-10]" />;
   }
 
-  return <></>;
+  return null;
 }
