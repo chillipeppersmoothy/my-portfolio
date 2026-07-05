@@ -14,7 +14,9 @@ const EXPERIENCE_DATA = [
                   Built a config-driven schema system for material types using JSON Schema, allowing new categories to be added without frontend code changes.
                   End-to-end workflows for supplier assignment, lifecycle tracking, approvals, cost tracking, notifications, and chat - establishing the single authoritative source of truth.
                   Designed a natural language search engine - Enabled intuitive material discovery by translating everyday queries (e.g., “lightweight breathable mesh”) into structured OpenSearch results.
-                  QR Code Implementation - Connected physical samples to digital records with scannable codes.`,
+                  QR Code Implementation - Connected physical samples to digital records with scannable codes.
+                  Eliminated 144 redundant API calls per page load and implemented a React based caching layer, improvingplatform responsiveness and scalability while reducing server load.
+                  Introduced Playwright E2E testing and created 100+ automated test cases integrated into CI/CD pipelines.`,
   },
   {
     year: "2024-present",
